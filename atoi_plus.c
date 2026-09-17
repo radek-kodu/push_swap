@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_disorder.c                                 :+:      :+:    :+:   */
+/*   atoi_plus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/16 19:31:12 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/09/16 20:50:51 by rpokorny         ###   ########.fr       */
+/*   Created: 2026/09/16 20:13:02 by rpokorny          #+#    #+#             */
+/*   Updated: 2026/09/17 17:29:00 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int compute_disorder(int *nbs, int size)
+int *atoi_plus(int argc, char **argv)
 {
-    int mistakes;
-    int total_pairs;
+    int *nbs;
     int i;
     int j;
 
-    mistakes = 0;
-    total_pairs = 0;
+    nbs = malloc(argc * sizeof(int));
+    if (nbs == NULL)
+        return (NULL);
     i = 0;
-    j = 0;
-    while (i < size - 1)
+    while (argv[i])
     {
-        j = i + 1;
-        while (j < size - 1)
+        nbs[i] = 0;
+        j = 0;
+        while (argv[i][j])
         {
-            total_pairs++;
-            if (nbs[i] > nbs[j])
-                mistakes++;
+            nbs[i] = nbs[i] * 10 + (argv[i][j] - '0');
+            j++;
         }
+        i++;
     }
-    return (mistakes / total_pairs);
+    return (nbs);    
 }

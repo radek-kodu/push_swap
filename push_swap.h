@@ -6,7 +6,11 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/09/17 13:12:47 by camille          ###   ########.fr       */
+=======
+/*   Updated: 2026/09/17 17:17:58 by rpokorny         ###   ########.fr       */
+>>>>>>> 4970769 (some experiments)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +26,17 @@ typedef struct s_node
 	int				value;
 	int				index;
 	struct s_node	*next;
+<<<<<<< HEAD
 }					t_node;
+=======
+ } t_node;
+
+typedef struct s_overnode
+{
+	t_node	*top;
+	int		length;
+}	t_overnode;
+>>>>>>> 4970769 (some experiments)
 
 int compute_disorder(int *nbs, size_t size);
 

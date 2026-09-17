@@ -6,11 +6,24 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 22:24:01 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/09/16 22:41:58 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/09/17 17:55:44 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int *complex(int *nbs, int argc)
+#include "../push_swap.h"
+
+void	indexing(t_node *nbs)
+{
+	int	i;
+
+	i = 0;
+	while (nbs[i])
+	{
+		
+	}
+}
+
+int *complex(t_node *nbs, int size)
 {
     
 }
