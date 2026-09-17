@@ -14,7 +14,6 @@ void	swap_toptwo(t_node **c)
     temp_value = (*c)->value;
     (*c)->value = (*c)->next->value;
     (*c)->next->value = temp_value;
-
     /*also switch index*/
     temp_index = (*c)->index;
     (*c)->index = (*c)->next->index;
