@@ -1,25 +1,38 @@
 #include "../push_swap.h"
 
-void	sa(t_node **a)
+void	swap_toptwo(t_node **c)
 {
     int temp_value;
     int temp_index;
 
     /* if 0 or 1 nodes, return*/
-    if (*a == NULL)
+    if (*c == NULL)
         return ;
-    if ((*a)->next == NULL)
+    if ((*c)->next == NULL)
         return ;
     /*switch values*/
-    temp_value = (*a)->value;
-    (*a)->value = (*a)->next->value;
-    (*a)->next->value = temp_value;
+    temp_value = (*c)->value;
+    (*c)->value = (*c)->next->value;
+    (*c)->next->value = temp_value;
 
     /*also switch index*/
-    temp_index = (*a)->index;
-    (*a)->index = (*a)->next->index;
-    (*a)->next->index = temp_index;
+    temp_index = (*c)->index;
+    (*c)->index = (*c)->next->index;
+    (*c)->next->index = temp_index;
 }
 
-void	sb(t_node **b);
-void	ss(t_node **a, t_node **b);
+void	sa(t_node **a)
+{
+    swap_toptwo(a);
+}
+
+void	sb(t_node **b)
+{
+    swap_toptwo(b);
+}
+
+void	ss(t_node **a, t_node **b)
+{
+    swap_toptwo(a);
+    swap_toptwo(b);
+}
