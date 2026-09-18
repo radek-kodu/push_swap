@@ -19,7 +19,7 @@ void	sort_three(t_node **a)
 			(*a)->next->next->value > (*a)->value)
 				sa(a);
 		// Largest at the middle
-		if ((*a)->next->value > (*a)->value &&
+		else if ((*a)->next->value > (*a)->value &&
 			(*a)->next->value > (*a)->next->next->value)
 		{
 			// 231 -> rra (123)
@@ -29,8 +29,7 @@ void	sort_three(t_node **a)
 				sa(a);
 		}
 		// Largest at the top
-		if ((*a)->value >  (*a)->next->value &&
-			(*a)->value > (*a)->next->next->value)
+		else
 		{
 			// 312 -> ra
 			ra(a);
