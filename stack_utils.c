@@ -15,16 +15,16 @@ Helper functions for building, inspecting, and cleaning up the linked-list stack
 
 int	is_sorted(t_node *a)
 {
-	// 1 is sorted, 0 is not sorted
+	// 0 is sorted, 1 is not sorted
 	if (!a)
-		return (1);
+		return (0);
 	while (a->next != NULL)
 	{
 		if (a->value > a->next->value)
-			return (0);
+			return (1);
 		a = a->next;
 	}
-	return (1);
+	return (0);
 }
 
 t_node	*lastnode(t_node *a)
