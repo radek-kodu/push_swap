@@ -1,14 +1,5 @@
 #include "../push_swap.h"
 
-static	t_node *lastnode(t_node *x)
-{
-	if (!x)
-		return (NULL);
-	while (x->next != NULL)
-		x = x->next;
-	return (x);
-}
-
 void    rotate(t_node **x)
 {
 	t_node	*temp;

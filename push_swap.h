@@ -39,5 +39,7 @@ typedef struct s_overnode
 >>>>>>> 4970769 (some experiments)
 
 int compute_disorder(int *nbs, size_t size);
+/*Stack Utilities*/
+t_node *lastnode(t_node *a);
 
 #endif
