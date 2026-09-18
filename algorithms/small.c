@@ -5,14 +5,14 @@ Specialized handling for n<= 5
 
 void	sort_two(t_node **a)
 {
-	if (is_sorted(*a) != 0)
+	if (!is_sorted(*a))
 		sa(a);
 }
 
 void	sort_three(t_node **a)
 {
 	// Check if already sorted
-	if (is_sorted(*a) != 0)
+	if (!is_sorted(*a))
 	{
 		// Largest at the bottom: 213 -> sa
 		if ((*a)->next->next->value > (*a)->next->value &&
@@ -22,29 +22,21 @@ void	sort_three(t_node **a)
 		if ((*a)->next->value > (*a)->value &&
 			(*a)->next->value > (*a)->next->next->value)
 		{
-			// 231 -> rra
-			if ((*a)->value > (*a)->next->next->value)
-				rra(a);
-			// 132 -> sa, ra
-			if ((*a)->value < (*a)->next->next->value)
-			{
+			// 231 -> rra (123)
+			rra(a);
+			// 132 -> rra (213), sa (123)
+			if (!is_sorted(*a))
 				sa(a);
-				ra(a);
-			}
 		}
 		// Largest at the top
 		if ((*a)->value >  (*a)->next->value &&
 			(*a)->value > (*a)->next->next->value)
 		{
 			// 312 -> ra
-			if ((*a)->next->value < (*a)->next->next->value)
-				ra(a);
-			// 321 -> sa, rra
-			if ((*a)->next->value > (*a)->next->next->value)
-			{
+			ra(a);
+			// 321 -> sa, rra // ra(213), sa(123)
+			if (!is_sorted(*a))
 				sa(a);
-				rra(a);
-			}
 		}
 	}
 }
