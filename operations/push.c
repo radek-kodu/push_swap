@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void	push(t_node **dest, t_node **src)
+static void	push(t_node **dest, t_node **src)
 {
 	t_node	*temp;
 	// if src is empty

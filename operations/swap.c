@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void	swap_toptwo(t_node **c)
+static void	swap_toptwo(t_node **c)
 {
     int temp_value;
     int temp_index;
