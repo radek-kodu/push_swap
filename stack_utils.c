@@ -107,7 +107,7 @@ void	bring_node_top(t_node **a, int node_pos)
 		}
 	} 
 	// if node_pos > middle_pos (push down until node_pos wraps around to 0)
-	else if (node_pos > middle_pos)
+	else
 	{
 		while (node_pos != stack_size)
 		{
