@@ -1,17 +1,17 @@
 /*
 
-Helper functions for building, inspecting, and cleaning up the linked-list stack. These may include:
+Helper functions for building, inspecting, and cleaning up the linked-list stack. 
 
-is_sorted: checks if the stack is sorted || int     is_sorted(t_node *a);
+is_sorted: checks if the stack is sorted 
 last_node: returns a pointer to the last node
 find_min: returns a pointer to the node with the smallest value
 node_position: returns an int indicating the position of a node
 get_stack_size: returns the number of nodes
 
+----------
 Other possible functions:
 new_node: creates a new stack || t_node	*new_node(int value);
 stack_add_back: adds a new node at the end || void stack_add_back(t_node **a, t_node *new);
-
 free_stack: destroys the stack || void    free_stack(t_node **a);
 
 */

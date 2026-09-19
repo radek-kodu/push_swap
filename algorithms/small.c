@@ -87,4 +87,6 @@ static void	bring_min_top(t_node **a, int min_pos)
 	}
 	else if (min_pos == 4)
 		rra(a);
+	else
+		return ;
 }
