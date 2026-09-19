@@ -50,13 +50,13 @@ void    sort_small(t_node **a, t_node **b)
 	int		min_pos;
 	int		orig_stack_size;
 
-	if(!a || !b)
+	if (!a || !b)
 		return ;
 	orig_stack_size = get_stack_size(*a);
 	while (get_stack_size(*a) > 3)
 	{
 		//get node_position of min
-		min_pos = node_position(*a, find_min(*a));
+		min_pos = get_node_position(*a, find_min(*a));
 		// bring_min_top
 		bring_min_top(a, min_pos);
 		// push to b

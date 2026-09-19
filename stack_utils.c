@@ -5,7 +5,7 @@ Helper functions for building, inspecting, and cleaning up the linked-list stack
 is_sorted: checks if the stack is sorted 
 last_node: returns a pointer to the last node
 find_min: returns a pointer to the node with the smallest value
-node_position: returns an int indicating the position of a node
+get_node_position: returns an int indicating the position of a node
 get_stack_size: returns the number of nodes
 
 ----------
@@ -57,7 +57,7 @@ t_node	*find_min(t_node *a)
 	return (min);
 }
 
-int node_position(t_node *a, t_node *node)
+int get_node_position(t_node *a, t_node *node)
 {
 	int	position;
 
