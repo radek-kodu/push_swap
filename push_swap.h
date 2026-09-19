@@ -54,7 +54,7 @@ void	rrr(t_node **a, t_node **b);
 /*Stack Utilities*/
 t_node *lastnode(t_node *a);
 t_node	*find_min(t_node *a);
-int node_position(t_node *a, t_node *node)
+int node_position(t_node *a, t_node *node);
 int	get_stack_size(t_node *a);
 
 #endif
