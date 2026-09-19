@@ -57,5 +57,7 @@ t_node	*find_min(t_node *a);
 int     get_node_position(t_node *a, t_node *node);
 int     get_stack_size(t_node *a);
 void	bring_node_top(t_node **a, int node_pos);
+/*Sort Algorithms*/
+void	sort_three(t_node **a);
 
 #endif

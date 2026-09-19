@@ -2,14 +2,16 @@
 
 void	sort_simple(t_node **a, t_node **b)
 {
-	// do this while get_stack_size(*a) > 3
-		// find_min
-		// get_node_position
-		// if node_pos != 0
-			// bring_node_top
-		// pb
-	// sort_three
-	// do this while get_stack_size(*b) > 0
-		// pa
+	int	node_pos;
+	
+	while (get_stack_size(*a) > 3)
+	{
+		node_pos = get_node_position(*a, find_min(*a));
+		bring_node_top(a, node_pos);
+		pb(a,b);
+	}
+	sort_three(a);
+	while (get_stack_size(*b) > 0)
+		pa(a,b);
 }
 
