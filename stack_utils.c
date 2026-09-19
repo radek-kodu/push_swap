@@ -6,11 +6,12 @@ is_sorted: checks if the stack is sorted || int     is_sorted(t_node *a);
 last_node: returns a pointer to the last node
 find_min: returns a pointer to the node with the smallest value
 node_position: returns an int indicating the position of a node
+get_stack_size: returns the number of nodes
 
-To do:
+Other possible functions:
 new_node: creates a new stack || t_node	*new_node(int value);
 stack_add_back: adds a new node at the end || void stack_add_back(t_node **a, t_node *new);
-stack_size: returns the number of nodes || int	stack_size(t_node *a);
+
 free_stack: destroys the stack || void    free_stack(t_node **a);
 
 */
@@ -50,7 +51,7 @@ t_node	*find_min(t_node *a)
 	while (a)
 	{
 		if (a->value < min->value)
-			min = a->next;
+			min = a;
 		a = a->next;
 	}
 	return (min);
@@ -71,4 +72,19 @@ int node_position(t_node *a, t_node *node)
 		position++;
 	}
 	return (-1);
+}
+
+int	get_stack_size(t_node *a)
+{
+	int	stack_size;
+
+	stack_size = 0;
+	if (!a)
+		return (stack_size);
+	while (a)
+	{
+		stack_size++;
+		a = a->next;
+	}
+	return (stack_size);
 }
