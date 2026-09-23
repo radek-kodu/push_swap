@@ -26,17 +26,13 @@ typedef struct s_node
 	int				value;
 	int				index;
 	struct s_node	*next;
-<<<<<<< HEAD
 }					t_node;
-=======
- } t_node;
 
 typedef struct s_overnode
 {
 	t_node	*top;
 	int		length;
 }	t_overnode;
->>>>>>> 4970769 (some experiments)
 
 int compute_disorder(int *nbs, size_t size);
 /*Operations*/
