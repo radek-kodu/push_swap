@@ -47,6 +47,10 @@ void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
+/*Input Utilities*/
+int	    is_empty_string(char *input);
+int     is_digit(char c);
+int	    is_whitespace(char c);
 /*Stack Utilities*/
 t_node  *lastnode(t_node *a);
 t_node	*find_min(t_node *a);

@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/24 20:56:47 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/24 21:01:17 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static char	**add_to_array(char** array, char *string)
 	int	j;
 
 	i = 0;
-	while (string[i] == ' ' || (string[i] >= 9 && string[i] <= 13))
+	while (is_whitespace(string[i]))
 		i++;
 	while (string[i])
 	{
 		j = i;
-		while ((string[i] >= '0' && string[i] <= '9')|| string[i] == '+' || string[i] == '-')
+		while (is_digit(string[i]) || string[i] == '+' || string[i] == '-')
 			j++;
 		// add string[i] to string[j] into array
 	}
