@@ -3,60 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/23 15:46:52 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/24 20:56:47 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	is_empty_string(char *input)
-{
-	int	i;
-	int char_flag;
-
-	i = 0;
-	while (input[i])
-	{
-		if (!(input[i] == ' ' || (input[i] >= 9 && input[i] <= 13)))
-			char_flag++;
-		i++;
-	}
-	if (char_flag > 0)
-		return (0);
-	return (1);
-}
-
 static int	is_valid_string(char* input)
 {
 	int	i;
-	int	sign_flag;
 	
 	i = 0;
-	sign_flag = 0;
 	if (is_empty_string(input))
-		return ;
+		return (0);
 	while (input[i])
 	{
-		if (input[i] == ' ' || (input[i] >= 9 && input[i] <= 13))
-		 	i++;
+		if (is_whitespace(input[i]))
+			i++;		
 		else if (input[i] == '+' || input[i] == '-') 
 		{
-			if (sign_flag > 0)
+			if (i != 0 && !(is_whitespace(input[i -1])))
 				return (0);
-			else
-				sign_flag++;			
+			else if (!(is_digit(input[i + 1])))
+				return (0);	
+			i++;
 		}
-		else if (!(input[i] >= '0' && input[i] <= '9'))
+		else if (!(is_digit(input[i])))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-char **add_to_array(char** array, char *string)
+static char	**add_to_array(char** array, char *string)
 {
 	int	i;
 	int	j;
