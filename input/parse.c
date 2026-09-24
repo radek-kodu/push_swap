@@ -6,13 +6,13 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/24 21:01:17 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/24 21:56:19 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	is_valid_string(char* input)
+static int	is_valid_string(char *input)
 {
 	int	i;
 	
@@ -33,26 +33,51 @@ static int	is_valid_string(char* input)
 		}
 		else if (!(is_digit(input[i])))
 			return (0);
-		i++;
+		else
+			i++;
 	}
 	return (1);
 }
 
+/*SHORTEN FUNCTION*/
 static char	**add_to_array(char** array, char *string)
 {
+	int	start;
+	int	end;
 	int	i;
 	int	j;
+	int length;
 
+	start = 0;
 	i = 0;
-	while (is_whitespace(string[i]))
+	j = 0;
+	while (array[i])
 		i++;
-	while (string[i])
+	while (string[start])
 	{
-		j = i;
-		while (is_digit(string[i]) || string[i] == '+' || string[i] == '-')
-			j++;
-		// add string[i] to string[j] into array
+		while (is_whitespace(string[start]))
+			start++;
+		end = start;
+		while (is_digit(string[end]) || string[end] == '+' || string[end] == '-')
+			end++;
+		length = end - start;
+		array[i] = malloc(length + 1);
+		j = 0;
+		while (start < end)
+		{
+			array[i][j] = string[start];
+			start++;
+			j++;		
+		}
+		array[i][j] = '\0';
+		i++;
 	}
+	return (array);
+}
+
+static int	count_numbers(char *string)
+{
+	/* TO DO*/
 }
 
 char	**parse(int argc, char **argv)
@@ -60,21 +85,28 @@ char	**parse(int argc, char **argv)
 	int		i;
 	int		j;
 	char	**array;
+	int		total;
 
 	if (argc == 1)
-		return ;
+		return (NULL);
 	i = 1;
 	if (!argv[i])
-		return ;
+		return (NULL);
+	array = NULL;
+	total = 0;
 	while (i < argc && argv[i])
 	{
 		// confirms that string isn't empty
 		// confirms that string contains only one +/-, digits & whitespace
 		if (!is_valid_string(argv[i]))
 			return (0);
+		// allocate memory by counting numbers
+		total = count_numbers(argv[i]);
+		
 		// add number to array
 		// if string contains whitespace, split chars
 		array = add_to_array(array, argv[i]);
+		i++;
 	}
 	return (array);
 }
