@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/24 22:15:42 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/25 16:00:58 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,21 @@ static char	**add_to_array(char** array, char *string)
 
 static int	count_numbers(char *string)
 {
-	/* TO DO*/
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (string[i])
+	{
+		while (is_whitespace(string[i]))
+			i++;
+		if (is_digit(string[i]) || string[i] == '+' || string[i] == '-')
+			if (is_whitespace(string[i + 1]) || string[i + 1] == '\0')
+				count++;	
+		i++;
+	}
+	return (count);
 }
 
 char	**parse(int argc, char **argv)
@@ -100,7 +114,7 @@ char	**parse(int argc, char **argv)
 		if (!is_valid_string(argv[i]))
 			return (0);
 		// allocate memory by counting numbers + 1 (for NULL)
-		total = count_numbers(argv[i]);
+		total += count_numbers(argv[i]);
 		
 		// add number to array
 		// if string contains whitespace, split chars
