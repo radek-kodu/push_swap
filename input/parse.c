@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/24 21:56:19 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/24 22:15:42 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	is_valid_string(char *input)
 	return (1);
 }
 
-/*SHORTEN FUNCTION*/
+/*SHORTEN FUNCTION -- maybe copy_number*/
 static char	**add_to_array(char** array, char *string)
 {
 	int	start;
@@ -50,7 +50,6 @@ static char	**add_to_array(char** array, char *string)
 
 	start = 0;
 	i = 0;
-	j = 0;
 	while (array[i])
 		i++;
 	while (string[start])
@@ -100,7 +99,7 @@ char	**parse(int argc, char **argv)
 		// confirms that string contains only one +/-, digits & whitespace
 		if (!is_valid_string(argv[i]))
 			return (0);
-		// allocate memory by counting numbers
+		// allocate memory by counting numbers + 1 (for NULL)
 		total = count_numbers(argv[i]);
 		
 		// add number to array
