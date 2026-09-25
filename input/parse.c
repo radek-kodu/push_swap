@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/25 16:00:58 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/25 16:23:19 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,16 @@ char	**parse(int argc, char **argv)
 		return (NULL);
 	array = NULL;
 	total = 0;
-	while (i < argc && argv[i])
+	while (argv[i])
 	{
-		// confirms that string isn't empty
-		// confirms that string contains only one +/-, digits & whitespace
 		if (!is_valid_string(argv[i]))
 			return (0);
-		// allocate memory by counting numbers + 1 (for NULL)
 		total += count_numbers(argv[i]);
-		
-		// add number to array
-		// if string contains whitespace, split chars
+	}	
+	array = malloc(total + 1);
+	i = 1;
+	while (argv[i])
+	{
 		array = add_to_array(array, argv[i]);
 		i++;
 	}
