@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/25 16:23:19 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/25 16:34:47 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 static int	is_valid_string(char *input)
 {
 	int	i;
-	
+
 	i = 0;
 	if (is_empty_string(input))
 		return (0);
 	while (input[i])
 	{
 		if (is_whitespace(input[i]))
-			i++;		
-		else if (input[i] == '+' || input[i] == '-') 
+			i++;
+		else if (is_sign(input[i]))
 		{
 			if (i != 0 && !(is_whitespace(input[i -1])))
 				return (0);
 			else if (!(is_digit(input[i + 1])))
-				return (0);	
+				return (0);
 			i++;
 		}
 		else if (!(is_digit(input[i])))
@@ -40,13 +40,13 @@ static int	is_valid_string(char *input)
 }
 
 /*SHORTEN FUNCTION -- maybe copy_number*/
-static char	**add_to_array(char** array, char *string)
+static char	**add_to_array(char **array, char *string)
 {
 	int	start;
 	int	end;
 	int	i;
 	int	j;
-	int length;
+	int	length;
 
 	start = 0;
 	i = 0;
@@ -57,7 +57,7 @@ static char	**add_to_array(char** array, char *string)
 		while (is_whitespace(string[start]))
 			start++;
 		end = start;
-		while (is_digit(string[end]) || string[end] == '+' || string[end] == '-')
+		while (is_digit(string[end]) || is_sign(string[end]))
 			end++;
 		length = end - start;
 		array[i] = malloc(length + 1);
@@ -66,7 +66,7 @@ static char	**add_to_array(char** array, char *string)
 		{
 			array[i][j] = string[start];
 			start++;
-			j++;		
+			j++;
 		}
 		array[i][j] = '\0';
 		i++;
@@ -85,9 +85,9 @@ static int	count_numbers(char *string)
 	{
 		while (is_whitespace(string[i]))
 			i++;
-		if (is_digit(string[i]) || string[i] == '+' || string[i] == '-')
-			if (is_whitespace(string[i + 1]) || string[i + 1] == '\0')
-				count++;	
+		if (is_digit(string[i]) || is_sign(string[i]))
+			if (is_whitespace(string[i + 1]) || string[i + 1])
+				count++;
 		i++;
 	}
 	return (count);
@@ -112,7 +112,7 @@ char	**parse(int argc, char **argv)
 		if (!is_valid_string(argv[i]))
 			return (0);
 		total += count_numbers(argv[i]);
-	}	
+	}
 	array = malloc(total + 1);
 	i = 1;
 	while (argv[i])

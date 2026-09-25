@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/25 15:44:53 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/25 16:27:38 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int is_digit(char c)
 int	is_whitespace(char c)
 {
 	if (c == ' ' || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
+}
+
+int	is_sign(char c)
+{
+	if (c == '+' || c == '-')
 		return (1);
 	return (0);
 }
