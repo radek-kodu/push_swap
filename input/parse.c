@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/25 16:34:47 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 13:19:10 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static char	**add_to_array(char **array, char *string)
 		array[i][j] = '\0';
 		i++;
 	}
+	array[i] == NULL;
 	return (array);
 }
 
@@ -112,8 +113,15 @@ char	**parse(int argc, char **argv)
 		if (!is_valid_string(argv[i]))
 			return (0);
 		total += count_numbers(argv[i]);
+		i++;
 	}
-	array = malloc(total + 1);
+	array = malloc((total + 1) * sizeof(char *));
+	i = 0;
+	while (i <= total)
+	{
+		array[i] = NULL;
+		i++;
+	}	
 	i = 1;
 	while (argv[i])
 	{
