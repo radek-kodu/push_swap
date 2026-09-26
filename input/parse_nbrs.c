@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 16:45:56 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 17:02:09 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static char	**calloc_plus(int total, int size);
 
 /*
 This version currently doesn't take into account flags yet.
-Once a parser for algo & bench flags has been created, insert index_start param.
-Use argv[index_start] instead of argv[i]
-Since flags are optional, index_start can either be 2/ 3 / 4.
+Once a parser for algo & bench flags has been created, insert flags.start as param.
+Use argv[flags.start] instead of argv[i]
+Since flags are optional, flags.start can either be 2/ 3 / 4.
 
 Possible options: 
 ./push_swap --simple --bench 4 3 2 1

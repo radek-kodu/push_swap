@@ -35,6 +35,13 @@ typedef struct s_overnode
 	int		length;
 }	t_overnode;
 
+typedef struct	s_flags
+{
+	int	strategy;
+	int	bench;
+	int	start;
+}	t_flags;
+
 int compute_disorder(int *nbs, size_t size);
 /*Operations*/
 void	sa(t_node **a);
