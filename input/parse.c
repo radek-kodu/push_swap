@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 14:59:53 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 15:41:54 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ char	**parse(int argc, char **argv)
 		i++;
 	}
 	array = calloc_plus((total + 1), sizeof(char *));
+    if (!array)
+        return (NULL);
+    i = 1;
 	while (argv[i])
 	{
 		array = add_to_array(array, argv[i]);
@@ -114,8 +117,13 @@ static int	count_numbers(char *string)
 		while (is_whitespace(string[i]))
 			i++;
 		if (is_digit(string[i]) || is_sign(string[i]))
-			count++;
-		i++;
+        {
+            count++;
+            if (is_sign(string[i]))
+                i++;
+            while (is_digit(string[i]))
+                i++;            
+        }
 	}
 	return (count);
 }
@@ -132,18 +140,18 @@ static int	find_length(char *string, int *start)
 	return (end - *start);
 }
 
-static char	**calloc_plus(int total, int size)
+static char	**calloc_plus(int count, int size)
 {
 	char	**array;
 	int		i;
 
-	i = 0;
-	if (total && size > (SIZE_MAX / total))
-		return (NULL);
-	array = malloc((total + 1) * sizeof(char *));
+	if (count && size > (SIZE_MAX / count))
+        return (NULL);
+	array = malloc(count * size);
 	if (array == NULL)
-		return (NULL);
-	while (i < (total * size))
+        return (NULL);
+	i = 0;
+	while (i < count)
 	{
 		array[i] = 0;
 		i++;
