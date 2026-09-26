@@ -6,9 +6,11 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/25 16:27:38 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 14:59:04 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../push_swap.h"
 
 int	is_empty_string(char *input)
 {
@@ -48,3 +50,4 @@ int	is_sign(char c)
 		return (1);
 	return (0);
 }
+

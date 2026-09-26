@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 14:23:43 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 14:59:53 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	is_valid_string(char *input);
 static char	**add_to_array(char **array, char *string);
 static int	count_numbers(char *string);
 static int	find_length(char *string, int *start);
+static char	**calloc_plus(int total, int size);
 
 char	**parse(int argc, char **argv)
 {
@@ -37,14 +38,7 @@ char	**parse(int argc, char **argv)
 		total += count_numbers(argv[i]);
 		i++;
 	}
-	array = malloc((total + 1) * sizeof(char *));
-	i = 0;
-	while (i <= total)
-	{
-		array[i] = NULL;
-		i++;
-	}
-	i = 1;
+	array = calloc_plus((total + 1), sizeof(char *));
 	while (argv[i])
 	{
 		array = add_to_array(array, argv[i]);
@@ -96,10 +90,9 @@ static char	**add_to_array(char **array, char *string)
 		length = find_length(string, &start);
 		array[i] = malloc(length + 1);
 		j = 0;
-		while (start < (start + length))
+		while (j < length)
 		{
-			array[i][j] = string[start];
-			start++;
+			array[i][j] = string[start + j];
 			j++;
 		}
 		array[i][j] = '\0';
@@ -137,4 +130,23 @@ static int	find_length(char *string, int *start)
 	while (is_digit(string[end]) || is_sign(string[end]))
 		end++;
 	return (end - *start);
+}
+
+static char	**calloc_plus(int total, int size)
+{
+	char	**array;
+	int		i;
+
+	i = 0;
+	if (total && size > (SIZE_MAX / total))
+		return (NULL);
+	array = malloc((total + 1) * sizeof(char *));
+	if (array == NULL)
+		return (NULL);
+	while (i < (total * size))
+	{
+		array[i] = 0;
+		i++;
+	}
+	return (array);
 }
