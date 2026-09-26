@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 14:22:14 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 14:23:43 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ static char	**add_to_array(char **array, char *string)
 	i = 0;
 	while (array[i])
 		i++;
-	length = find_length(string, &start);
-	array[i] = malloc(length + 1);
 	while (string[start])
 	{
+		length = find_length(string, &start);
+		array[i] = malloc(length + 1);
 		j = 0;
 		while (start < (start + length))
 		{
