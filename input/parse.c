@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 14:06:47 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 14:22:14 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**parse(int argc, char **argv)
 	{
 		array[i] = NULL;
 		i++;
-	}	
+	}
 	i = 1;
 	while (argv[i])
 	{
@@ -83,7 +83,6 @@ static int	is_valid_string(char *input)
 static char	**add_to_array(char **array, char *string)
 {
 	int	start;
-	int	end;
 	int	i;
 	int	j;
 	int	length;
@@ -92,13 +91,12 @@ static char	**add_to_array(char **array, char *string)
 	i = 0;
 	while (array[i])
 		i++;
+	length = find_length(string, &start);
+	array[i] = malloc(length + 1);
 	while (string[start])
 	{
-		length = find_length(string, &start);
-		array[i] = malloc(length + 1);
-		end = start + length;
 		j = 0;
-		while (start < end)
+		while (start < (start + length))
 		{
 			array[i][j] = string[start];
 			start++;
@@ -132,7 +130,6 @@ static int	count_numbers(char *string)
 static int	find_length(char *string, int *start)
 {
 	int	end;
-
 
 	while (is_whitespace(string[*start]))
 		(*start)++;
