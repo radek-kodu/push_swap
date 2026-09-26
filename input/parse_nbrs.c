@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 16:11:15 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/26 16:24:40 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
 static char	**add_to_array(char **array, char *string);
 static char	**calloc_plus(int total, int size);
 
-char	**parse(int argc, char **argv)
+char	**parse_nbrs(int argc, char **argv)
 {
 	int		i;
 	char	**array;
@@ -37,14 +36,14 @@ char	**parse(int argc, char **argv)
 		i++;
 	}
 	array = calloc_plus((total + 1), sizeof(char *));
-    if (!array)
-        return (NULL);
-    i = 1;
+	if (!array)
+		return (NULL);
+	i = 1;
 	while (argv[i])
 	{
 		array = add_to_array(array, argv[i]);
-        if (!array)
-            return (NULL);
+		if (!array)
+			return (NULL);
 		i++;
 	}
 	return (array);
@@ -65,8 +64,8 @@ static char	**add_to_array(char **array, char *string)
 	{
 		length = find_length(string, &start);
 		array[i] = malloc(length + 1);
-        if (!(array[i]))
-            return (NULL);
+		if (!(array[i]))
+			return (NULL);
 		j = 0;
 		while (j < length)
 		{
@@ -86,10 +85,10 @@ static char	**calloc_plus(int count, int size)
 	int		i;
 
 	if (count && size > (SIZE_MAX / count))
-        return (NULL);
+		return (NULL);
 	array = malloc(count * size);
 	if (array == NULL)
-        return (NULL);
+		return (NULL);
 	i = 0;
 	while (i < count)
 	{

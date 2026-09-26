@@ -48,7 +48,8 @@ void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
-/*Input Utilities*/
+/*Input & Input Utilities*/
+char	**parse_nbrs(int argc, char **argv);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);
