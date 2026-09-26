@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 15:41:54 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/26 15:50:21 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	**parse(int argc, char **argv)
 	while (argv[i])
 	{
 		array = add_to_array(array, argv[i]);
+        if (!array)
+            return (NULL);
 		i++;
 	}
 	return (array);
@@ -92,6 +94,8 @@ static char	**add_to_array(char **array, char *string)
 	{
 		length = find_length(string, &start);
 		array[i] = malloc(length + 1);
+        if (!(array[i]))
+            return (NULL);
 		j = 0;
 		while (j < length)
 		{
