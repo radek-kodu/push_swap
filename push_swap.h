@@ -72,6 +72,8 @@ int     get_node_position(t_node *a, t_node *node);
 int     get_stack_size(t_node *a);
 void	bring_node_top(t_node **a, int node_pos);
 /*Sort Algorithms*/
+void	sort_two(t_node **a);
 void	sort_three(t_node **a);
+void    sort_small(t_node **a, t_node **b);
 
 #endif
