@@ -57,6 +57,7 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 /*Input & Input Utilities*/
 char	**parse_nbrs(int argc, char **argv);
+t_flags	parse_flags(int argc, char **argv);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);
