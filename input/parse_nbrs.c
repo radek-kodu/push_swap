@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_nbrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 16:24:40 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/09/26 16:38:41 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 static char	**add_to_array(char **array, char *string);
 static char	**calloc_plus(int total, int size);
 
+/*
+This version currently doesn't take into account algorithm flags
+Once a parser for algo flags has been created, insert index_start param.
+Use argv[index_start] instead of argv[i]
+Since flags are optional, index_start can either be 1 or 2.
+*/
 char	**parse_nbrs(int argc, char **argv)
 {
 	int		i;
