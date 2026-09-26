@@ -53,6 +53,9 @@ int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);
 int		is_sign(char c);
+int	    is_valid_string(char *input);
+int	    count_numbers(char *string);
+int	    find_length(char *string, int *start);
 /*Stack Utilities*/
 t_node  *lastnode(t_node *a);
 t_node	*find_min(t_node *a);
