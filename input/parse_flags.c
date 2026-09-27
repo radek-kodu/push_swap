@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 17:11:15 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 17:15:16 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 Values of struct:
 	strategy - 1 to 4
+		0 - no strategy flag
 		1 - adaptive
 		2 - simple
 		3 - complex
@@ -32,9 +33,9 @@ For error handling, start = -1 (flags are a mistake)
 How to handle no flags?
 */
 
-static int	set_start(t_flags *flags);
-static t_flags	*assign_flag(char *string, t_flags *flags);
 static int	is_validflag(char *string);
+static t_flags	*assign_flag(char *string, t_flags *flags);
+static int	set_start(t_flags *flags);
 
 t_flags	*parse_flags(int argc, char **argv)
 {
@@ -64,7 +65,9 @@ t_flags	*parse_flags(int argc, char **argv)
 
 // Function that checks if the flag is valid
 // only acceptable strings are: --bench, --simple, --medium, --complex, --adaptive
-// Returns 0 if the string are valid numbers
+// Returns 1 if valid flag
+// Returns 0 if not valid flag but valid numbers
+// Returns -1 if neither valid flag nor numbers
 static int	is_validflag(char *string)
 {
 	
@@ -78,7 +81,8 @@ static int	is_validflag(char *string)
 		return (-1);
 }
 
-// assigns the flag to struct values and checks for duplications (flags.start = -1)
+// assigns the flag to struct values and checks for duplications 
+// For duplications, flags.start = -1
 // edge case: ./push_swap --adaptive --complex 4 3 2 1
 // edge case: ./push_swap --bench --bench 4 3 2 1
 static t_flags	*assign_flag(char *string, t_flags *flags)
