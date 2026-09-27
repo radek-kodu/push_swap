@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 18:29:17 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 18:40:18 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,13 @@ How to handle no flags?
 static int	is_validflag(char *string);
 static t_flags	*assign_flag(char *string, t_flags *flags);
 static int	is_flag_available(char *string, t_flags *flags);
-static int	set_start(t_flags *flags);
 
-t_flags	*parse_flags(int argc, char **argv)
+// Does not check argc
+t_flags	*parse_flags(char **argv)
 {
 	t_flags	*flags;
 	int		i;
 	
-	if (argc < 2)
-		return (NULL);
 	flags = malloc(sizeof(t_flags));
 	if (!flags)
 		return (NULL);
@@ -61,6 +59,8 @@ t_flags	*parse_flags(int argc, char **argv)
 			return (flags);
 		}
 		flags = assign_flag(argv[i], flags);
+		if ((*flags).start == -1)
+			return (flags);
 		i++;	
 	}
 	(*flags).start = i;
@@ -93,9 +93,7 @@ static int	is_validflag(char *string)
 // edge case: ./push_swap --bench --bench 4 3 2 1
 static t_flags	*assign_flag(char *string, t_flags *flags)
 {
-	if (is_valid_nbrs(string))
-		return (flags);
-	else if (!(is_flag_available(string, flags)))
+	if (!(is_flag_available(string, flags)))
 	{
 		(*flags).start = -1;
 		return (flags);
@@ -126,18 +124,4 @@ static int	is_flag_available(char *string, t_flags *flags)
 		|| ft_strcmp(string, "--adaptive") == 0))
 		return (0);
 	return (1);
-}
-
-static int	set_start(t_flags *flags)
-{
-	int start;
-
-	start = 0;
-	if 	((*flags).bench != 0 && (*flags).strategy != 0)
-		start = 3;
-	else if ((*flags).bench != 0 || (*flags).strategy != 0)
-		start = 2;
-	else
-		start = 1;
-	return (start);
 }
