@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/26 16:11:05 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 12:38:18 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,32 @@ int	find_length(char *string, int *start)
 	while (is_digit(string[end]) || is_sign(string[end]))
 		end++;
 	return (end - *start);
+}
+
+char	*ft_substr(char const *s, unsigned int start, int len)
+{
+	unsigned int	j;
+	char			*substr;
+	int 			slen;
+
+	j = 0;
+	if (!s)
+		return (NULL);
+	slen = ft_strlen(s);
+	if (start > slen)
+		return (ft_strdup(""));
+	if (start + len > slen)
+		substr = malloc((slen - start) + 1);
+	else		
+		substr = malloc(len + 1);
+	if (!substr)
+		return (NULL);
+	while (j < len && s[start])
+	{
+		substr[j] = s[start];
+		start++;
+		j++;
+	}
+	substr[j] = '\0';
+	return (substr);
 }
