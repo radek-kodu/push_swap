@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_nbrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 12:40:16 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 13:00:56 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 static char	**add_to_array(char **array, char *string);
 static char	**calloc_plus(int total, int size);
 static int	get_total(char **argv, int i);
 static int	find_freeslot(char **array);
 
-char	**parse(int argc, char **argv)
+/*
+This version currently doesn't take into account flags yet.
+Once a parser for algo & bench flags has been created, insert flags.start as param.
+Use argv[flags.start] instead of argv[i]
+Since flags are optional, flags.start can either be 2/ 3 / 4.
+
+Possible options: 
+./push_swap --simple --bench 4 3 2 1
+./push_swap --bench --complex 4 3 2 1
+./push_swap --simple 4 3 2 1
+./push_swap 4 3 2 1
+*/
+char	**parse_nbrs(int argc, char **argv)
 {
 	int		i;
 	char	**array;
@@ -30,8 +41,9 @@ char	**parse(int argc, char **argv)
 	array = NULL;
 	total = get_total(argv, i);
 	array = calloc_plus((total + 1), sizeof(char *));
-	if (!array)
-		return (NULL);
+    if (!array)
+        return (NULL);
+    i = 1;
 	while (argv[i])
 	{
 		array = add_to_array(array, argv[i]);
@@ -54,10 +66,16 @@ static char	**add_to_array(char **array, char *string)
 	while (string[start])
 	{
 		length = find_length(string, &start);
-		array[i] = ft_substr(string, start, length);
-		if (!(array[i]))
-			return (NULL);
-		start += length;
+		array[i] = malloc(length + 1);
+        if (!(array[i]))
+            return (NULL);
+		j = 0;
+		while (j < length)
+		{
+			array[i][j] = string[start + j];
+			j++;
+		}
+		array[i][j] = '\0';
 		i++;
 	}
 	array[i] = NULL;
