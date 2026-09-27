@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 17:03:32 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 17:11:15 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ For error handling, start = -1 (flags are a mistake)
 How to handle no flags?
 */
 
+static int	set_start(t_flags *flags);
+static t_flags	*assign_flag(char *string, t_flags *flags);
+static int	is_validflag(char *string);
+
 t_flags	*parse_flags(int argc, char **argv)
 {
 	t_flags	*flags;
@@ -54,6 +58,7 @@ t_flags	*parse_flags(int argc, char **argv)
 		flags = assign_flag(argv[i], flags);
 		i++;	
 	}
+	(*flags).start = set_start(flags);
 	return (flags);
 }
 
@@ -97,4 +102,18 @@ static t_flags	*assign_flag(char *string, t_flags *flags)
 			return ((*flags).strategy = 4);						
 	}
 	return (flags);
+}
+
+static int	set_start(t_flags *flags)
+{
+	int start;
+
+	start = 0;
+	if 	((*flags).bench != 0 && (*flags).strategy != 0)
+		start = 3;
+	else if ((*flags).bench != 0 || (*flags).strategy != 0)
+		start = 2;
+	else
+		start = 1;
+	return (start);
 }
