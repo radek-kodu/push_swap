@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 17:15:16 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 18:01:57 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_flags	*parse_flags(int argc, char **argv)
 	
 	if (argc == 1)
 		return (&((t_flags){0, 0, -1}));
+	flags = malloc(sizeof(t_flags));
 	(*flags).strategy = 0;
 	(*flags).bench = 0;
 	(*flags).start = 0;
@@ -71,9 +72,11 @@ t_flags	*parse_flags(int argc, char **argv)
 static int	is_validflag(char *string)
 {
 	
-	if (ft_strcmp(string, "--bench") || ft_strcmp(string, "--simple"
-		|| ft_strcmp(string, "--medium") || ft_strcmp(string, "--complex")
-		|| ft_strcmp(string, "--adaptive")))
+	if (ft_strcmp(string, "--bench") == 0
+		|| ft_strcmp(string, "--simple") == 0
+		|| ft_strcmp(string, "--medium") == 0
+		|| ft_strcmp(string, "--complex") == 0
+		|| ft_strcmp(string, "--adaptive") == 0)
 		return (1);
 	else if (is_valid_string(string))
 		return (0);
@@ -90,20 +93,27 @@ static t_flags	*assign_flag(char *string, t_flags *flags)
 	
 	if (is_valid_string(string))
 		return (flags);
-	else if ((*flags).bench != 0 || (*flags).strategy != 0)
-		return ((*flags).start == -1);
+	else if (((*flags).bench != 0 && ft_strcmp(string, "--bench") == 0)
+		|| ((*flags).strategy != 0 && (ft_strcmp(string, "--simple") == 0
+		|| ft_strcmp(string, "--medium") == 0
+		|| ft_strcmp(string, "--complex") == 0
+		|| ft_strcmp(string, "--adaptive") == 0)))
+	{
+		(*flags).start = -1;
+		return (flags);
+	}	
 	else
 	{
-		if (string == "--bench")
-			return ((*flags).bench = 1);
-		else if (string == "--adaptive")
-			return ((*flags).strategy = 1);
-		else if (string == "--simple")
-			return ((*flags).strategy = 2);
-		else if (string == "--medium")
-			return ((*flags).strategy = 3);
-		else if (string == "--complex")
-			return ((*flags).strategy = 4);						
+		if (ft_strcmp(string, "--bench") == 0)
+			(*flags).bench = 1;
+		else if (ft_strcmp(string, "--adaptive") == 0)
+			(*flags).strategy = 1;
+		else if (ft_strcmp(string, "--simple") == 0)
+			(*flags).strategy = 2;
+		else if (ft_strcmp(string, "--medium") == 0)
+			(*flags).strategy = 3;
+		else if (ft_strcmp(string, "--complex") == 0)
+			(*flags).strategy = 4;				
 	}
 	return (flags);
 }
