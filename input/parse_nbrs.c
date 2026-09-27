@@ -6,17 +6,11 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 13:00:56 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 13:08:01 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static char	**add_to_array(char **array, char *string);
-static char	**calloc_plus(int total, int size);
-static int	get_total(char **argv, int i);
-static int	find_freeslot(char **array);
-
 /*
 This version currently doesn't take into account flags yet.
 Once a parser for algo & bench flags has been created, insert flags.start as param.
@@ -29,6 +23,12 @@ Possible options:
 ./push_swap --simple 4 3 2 1
 ./push_swap 4 3 2 1
 */
+
+static char	**add_to_array(char **array, char *string);
+static char	**calloc_plus(int total, int size);
+static int	get_total(char **argv, int i);
+static int	find_freeslot(char **array);
+
 char	**parse_nbrs(int argc, char **argv)
 {
 	int		i;
@@ -40,6 +40,8 @@ char	**parse_nbrs(int argc, char **argv)
 		return (NULL);
 	array = NULL;
 	total = get_total(argv, i);
+    if (total == 0)
+        return (NULL);
 	array = calloc_plus((total + 1), sizeof(char *));
     if (!array)
         return (NULL);
@@ -54,32 +56,26 @@ char	**parse_nbrs(int argc, char **argv)
 	return (array);
 }
 
-static char	**add_to_array(char **array, char *string)
+static char **add_to_array(char **array, char *string)
 {
-	int	start;
-	int	i;
-	int	j;
-	int	length;
+    int start;
+    int i;
+    int j;
+    int length;
 
-	start = 0;
-	i = find_freeslot(array);
-	while (string[start])
-	{
-		length = find_length(string, &start);
-		array[i] = malloc(length + 1);
+    start = 0;
+    i = find_freeslot(array);
+    while (string[start])
+    {
+        length = find_length(string, &start);
+        array[i] = ft_substr(string, start, length);
         if (!(array[i]))
             return (NULL);
-		j = 0;
-		while (j < length)
-		{
-			array[i][j] = string[start + j];
-			j++;
-		}
-		array[i][j] = '\0';
-		i++;
-	}
-	array[i] = NULL;
-	return (array);
+        start += length;
+        i++;
+    }
+    array[i] = NULL;
+    return (array);
 }
 
 static char	**calloc_plus(int count, int size)
@@ -105,10 +101,11 @@ static int	get_total(char **argv, int i)
 {
 	int	total;
 	
+    total = 0;
 	while (argv[i])
 	{
 		if (!is_valid_string(argv[i]))
-			return (NULL);
+			return (0);
 		total += count_numbers(argv[i]);
 		i++;
 	}
