@@ -62,7 +62,7 @@ int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);
 int		is_sign(char c);
-int	    is_valid_string(char *input);
+int	    is_valid_nbrs(char *input);
 int	    count_numbers(char *string);
 int	    find_length(char *string, int *start);
 char	*ft_substr(char const *s, unsigned int start, int len);

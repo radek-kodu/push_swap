@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 16:11:00 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 18:27:55 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	is_sign(char c)
 	return (0);
 }
 
-int	is_valid_string(char *input)
+int	is_valid_nbrs(char *input)
 {
 	int	i;
 

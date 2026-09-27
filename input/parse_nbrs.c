@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 15:57:28 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 18:28:41 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	get_total(char **argv, int i)
     total = 0;
 	while (argv[i])
 	{
-		if (!is_valid_string(argv[i]))
+		if (!is_valid_nbrs(argv[i]))
 			return (-1);
 		total += count_numbers(argv[i]);
 		i++;

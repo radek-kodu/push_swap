@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 18:09:21 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 18:29:17 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,28 @@ t_flags	*parse_flags(int argc, char **argv)
 {
 	t_flags	*flags;
 	int		i;
-	int		limit;
-	int		valid;
 	
-	if (argc == 1)
-		return (&((t_flags){0, 0, -1}));
+	if (argc < 2)
+		return (NULL);
 	flags = malloc(sizeof(t_flags));
+	if (!flags)
+		return (NULL);
 	(*flags).strategy = 0;
 	(*flags).bench = 0;
 	(*flags).start = 0;
 	i = 1;
-	limit = 3;
 	
-	while (i < limit)
+	while (argv[i] && !(is_valid_nbrs(argv[i])))
 	{
 		if ((is_validflag(argv[i])) < 0)
-			return (&((t_flags){0, 0, -1}));
+		{
+			(*flags).start = -1;	
+			return (flags);
+		}
 		flags = assign_flag(argv[i], flags);
 		i++;	
 	}
-	(*flags).start = set_start(flags);
+	(*flags).start = i;
 	return (flags);
 }
 
@@ -79,7 +81,7 @@ static int	is_validflag(char *string)
 		|| ft_strcmp(string, "--complex") == 0
 		|| ft_strcmp(string, "--adaptive") == 0)
 		return (1);
-	else if (is_valid_string(string))
+	else if (is_valid_nbrs(string))
 		return (0);
 	else
 		return (-1);
@@ -91,7 +93,7 @@ static int	is_validflag(char *string)
 // edge case: ./push_swap --bench --bench 4 3 2 1
 static t_flags	*assign_flag(char *string, t_flags *flags)
 {
-	if (is_valid_string(string))
+	if (is_valid_nbrs(string))
 		return (flags);
 	else if (!(is_flag_available(string, flags)))
 	{
