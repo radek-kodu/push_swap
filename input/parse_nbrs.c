@@ -6,45 +6,40 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 18:28:41 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 18:56:56 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 /*
-This version currently doesn't take into account flags yet.
-Once a parser for algo & bench flags has been created, insert flags.start as param.
-Use argv[flags.start] instead of argv[i]
-Since flags are optional, flags.start can either be 2/ 3 / 4.
+Insert flags.start as parameter int start.
+TO DO: fix possible memory leaks
 */
 
 static char	**add_to_array(char **array, char *string);
 static int	get_total(char **argv, int i);
 static int	find_freeslot(char **array);
 
-char	**parse_nbrs(int argc, char **argv)
+char	**parse_nbrs(char **argv, int start)
 {
-	int		i;
 	char	**array;
 	int		total;
 
-	i = 1;
-	if (argc == 1 || !argv[i])
+	if (!argv[start])
 		return (NULL);
 	array = NULL;
-	total = get_total(argv, i);
+	total = get_total(argv, start);
     if (total <= 0)
         return (NULL);
 	array = calloc_plus((total + 1), sizeof(char *));
     if (!array)
         return (NULL);
-    i = 1;
-	while (argv[i])
+	while (argv[start])
 	{
-		array = add_to_array(array, argv[i]);
+		array = add_to_array(array, argv[start]);
 		if (!array)
 			return (NULL);
-		i++;
+		start++;
 	}
 	return (array);
 }
