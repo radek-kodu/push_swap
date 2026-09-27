@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 13:18:50 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 13:20:16 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Possible options:
 */
 
 static char	**add_to_array(char **array, char *string);
-static char	**calloc_plus(int total, int size);
 static int	get_total(char **argv, int i);
 static int	find_freeslot(char **array);
 
@@ -75,25 +74,6 @@ static char **add_to_array(char **array, char *string)
     }
     array[i] = NULL;
     return (array);
-}
-
-static char	**calloc_plus(int count, int size)
-{
-	char	**array;
-	int		i;
-
-	if (count && size > (SIZE_MAX / count))
-		return (NULL);
-	array = malloc(count * size);
-	if (array == NULL)
-		return (NULL);
-	i = 0;
-	while (i < count)
-	{
-		array[i] = NULL;
-		i++;
-	}
-	return (array);
 }
 
 static int	get_total(char **argv, int i)

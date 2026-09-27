@@ -66,6 +66,7 @@ int	    is_valid_string(char *input);
 int	    count_numbers(char *string);
 int	    find_length(char *string, int *start);
 char	*ft_substr(char const *s, unsigned int start, int len);
+char	**calloc_plus(int count, int size);
 /*Stack Utilities*/
 t_node  *lastnode(t_node *a);
 t_node	*find_min(t_node *a);

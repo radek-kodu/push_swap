@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 12:38:18 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 13:19:51 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,23 @@ char	*ft_substr(char const *s, unsigned int start, int len)
 	}
 	substr[j] = '\0';
 	return (substr);
+}
+
+char	**calloc_plus(int count, int size)
+{
+	char	**array;
+	int		i;
+
+	if (count && size > (SIZE_MAX / count))
+		return (NULL);
+	array = malloc(count * size);
+	if (array == NULL)
+		return (NULL);
+	i = 0;
+	while (i < count)
+	{
+		array[i] = NULL;
+		i++;
+	}
+	return (array);
 }
