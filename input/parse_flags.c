@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 18:01:57 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 18:09:21 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ How to handle no flags?
 
 static int	is_validflag(char *string);
 static t_flags	*assign_flag(char *string, t_flags *flags);
+static int	is_flag_available(char *string, t_flags *flags);
 static int	set_start(t_flags *flags);
 
 t_flags	*parse_flags(int argc, char **argv)
@@ -90,14 +91,9 @@ static int	is_validflag(char *string)
 // edge case: ./push_swap --bench --bench 4 3 2 1
 static t_flags	*assign_flag(char *string, t_flags *flags)
 {
-	
 	if (is_valid_string(string))
 		return (flags);
-	else if (((*flags).bench != 0 && ft_strcmp(string, "--bench") == 0)
-		|| ((*flags).strategy != 0 && (ft_strcmp(string, "--simple") == 0
-		|| ft_strcmp(string, "--medium") == 0
-		|| ft_strcmp(string, "--complex") == 0
-		|| ft_strcmp(string, "--adaptive") == 0)))
+	else if (!(is_flag_available(string, flags)))
 	{
 		(*flags).start = -1;
 		return (flags);
@@ -116,6 +112,18 @@ static t_flags	*assign_flag(char *string, t_flags *flags)
 			(*flags).strategy = 4;				
 	}
 	return (flags);
+}
+
+static int	is_flag_available(char *string, t_flags *flags)
+{
+	if ((*flags).bench != 0 && ft_strcmp(string, "--bench") == 0)
+		return (0);
+	else if ((*flags).strategy != 0 && (ft_strcmp(string, "--simple") == 0
+		|| ft_strcmp(string, "--medium") == 0
+		|| ft_strcmp(string, "--complex") == 0
+		|| ft_strcmp(string, "--adaptive") == 0))
+		return (0);
+	return (1);
 }
 
 static int	set_start(t_flags *flags)
