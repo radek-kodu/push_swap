@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 13:19:51 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 16:11:00 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,4 +158,19 @@ char	**calloc_plus(int count, int size)
 		i++;
 	}
 	return (array);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if ((unsigned char)s1[i] == (unsigned char)s2[i])
+		    i++;
+        else
+            return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+    return (0);
 }

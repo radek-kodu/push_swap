@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 13:20:16 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 15:57:28 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ This version currently doesn't take into account flags yet.
 Once a parser for algo & bench flags has been created, insert flags.start as param.
 Use argv[flags.start] instead of argv[i]
 Since flags are optional, flags.start can either be 2/ 3 / 4.
-
-Possible options: 
-./push_swap --simple --bench 4 3 2 1
-./push_swap --bench --complex 4 3 2 1
-./push_swap --simple 4 3 2 1
-./push_swap 4 3 2 1
 */
 
 static char	**add_to_array(char **array, char *string);
