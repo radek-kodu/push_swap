@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 13:08:01 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/27 13:18:50 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	**parse_nbrs(int argc, char **argv)
 		return (NULL);
 	array = NULL;
 	total = get_total(argv, i);
-    if (total == 0)
+    if (total <= 0)
         return (NULL);
 	array = calloc_plus((total + 1), sizeof(char *));
     if (!array)
@@ -60,7 +60,6 @@ static char **add_to_array(char **array, char *string)
 {
     int start;
     int i;
-    int j;
     int length;
 
     start = 0;
@@ -91,7 +90,7 @@ static char	**calloc_plus(int count, int size)
 	i = 0;
 	while (i < count)
 	{
-		array[i] = 0;
+		array[i] = NULL;
 		i++;
 	}
 	return (array);
@@ -105,7 +104,7 @@ static int	get_total(char **argv, int i)
 	while (argv[i])
 	{
 		if (!is_valid_string(argv[i]))
-			return (0);
+			return (-1);
 		total += count_numbers(argv[i]);
 		i++;
 	}
