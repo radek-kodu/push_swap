@@ -6,13 +6,21 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/28 20:26:10 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/28 21:43:31 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 /*
-Insert flags.start as parameter (int start).
+Checks the format of the input:
+
+* Split "3 42 -7" into individual strings
+* Check for non-numeric characters
+* Check sign placement
+* Reject "+" / "-" with no digits
+* Produces an array of chars
+
+NOTE: Insert flags.start as parameter (int start).
 */
 
 static char	**add_to_array(char **array, char *string);
