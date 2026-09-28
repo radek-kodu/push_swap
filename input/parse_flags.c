@@ -6,17 +6,19 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/28 21:56:22 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/28 23:08:50 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 /*
+Parses & checks the flags and saves them to a struct.
+
 Values of struct:
 	strategy - 1 to 4
 		0 - no strategy flag
-		1 - adaptive
+		1 - adaptive (default)
 		2 - simple
 		3 - complex
 		4 - medium
@@ -29,8 +31,7 @@ Possible options:
 ./push_swap --simple 4 3 2 1
 ./push_swap 4 3 2 1
 
-For error handling, start = -1 (flags are a mistake)
-How to handle no flags?
+For error handling, start = -1 
 */
 
 static int	is_validflag(char *string);
@@ -53,7 +54,7 @@ t_flags	*parse_flags(char **argv)
 	
 	while (argv[i] && !(is_valid_nbrs(argv[i])))
 	{
-		if ((is_validflag(argv[i])) == 0)
+		if (!is_validflag(argv[i]))
 		{
 			(*flags).start = -1;	
 			return (flags);
@@ -69,8 +70,6 @@ t_flags	*parse_flags(char **argv)
 
 // Function that checks if the flag is valid
 // only acceptable strings are: --bench, --simple, --medium, --complex, --adaptive
-// Returns 1 if valid flag
-// Returns 0 if not valid flag
 static int	is_validflag(char *string)
 {
 	
