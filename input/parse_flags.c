@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 18:40:18 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/28 21:56:22 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_flags	*parse_flags(char **argv)
 	
 	while (argv[i] && !(is_valid_nbrs(argv[i])))
 	{
-		if ((is_validflag(argv[i])) < 0)
+		if ((is_validflag(argv[i])) == 0)
 		{
 			(*flags).start = -1;	
 			return (flags);
@@ -70,8 +70,7 @@ t_flags	*parse_flags(char **argv)
 // Function that checks if the flag is valid
 // only acceptable strings are: --bench, --simple, --medium, --complex, --adaptive
 // Returns 1 if valid flag
-// Returns 0 if not valid flag but valid numbers
-// Returns -1 if neither valid flag nor numbers
+// Returns 0 if not valid flag
 static int	is_validflag(char *string)
 {
 	
@@ -81,10 +80,8 @@ static int	is_validflag(char *string)
 		|| ft_strcmp(string, "--complex") == 0
 		|| ft_strcmp(string, "--adaptive") == 0)
 		return (1);
-	else if (is_valid_nbrs(string))
-		return (0);
 	else
-		return (-1);
+		return (0);
 }
 
 // assigns the flag to struct values and checks for duplications 
