@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 18:27:55 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/28 20:09:24 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,4 +173,17 @@ int	ft_strcmp(const char *s1, const char *s2)
             return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 	}
     return (0);
+}
+
+void    free_array(char **array)
+{
+    int i;
+    
+    i = 0;
+    while (array[i])
+    {
+        free(array[i]);
+        i++;
+    }
+    free(array);
 }

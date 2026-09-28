@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/27 18:56:56 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/28 20:19:26 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,19 @@ char	**parse_nbrs(char **argv, int start)
 		return (NULL);
 	array = NULL;
 	total = get_total(argv, start);
-    if (total <= 0)
-        return (NULL);
+	if (total <= 0)
+		return (NULL);
 	array = calloc_plus((total + 1), sizeof(char *));
-    if (!array)
-        return (NULL);
+	if (!array)
+		return (NULL);
 	while (argv[start])
 	{
 		array = add_to_array(array, argv[start]);
 		if (!array)
+		{
+			free_array(array);    
 			return (NULL);
+		}
 		start++;
 	}
 	return (array);
@@ -46,30 +49,33 @@ char	**parse_nbrs(char **argv, int start)
 
 static char **add_to_array(char **array, char *string)
 {
-    int start;
-    int i;
-    int length;
+	int start;
+	int i;
+	int length;
 
-    start = 0;
-    i = find_freeslot(array);
-    while (string[start])
-    {
-        length = find_length(string, &start);
-        array[i] = ft_substr(string, start, length);
-        if (!(array[i]))
-            return (NULL);
-        start += length;
-        i++;
-    }
-    array[i] = NULL;
-    return (array);
+	start = 0;
+	i = find_freeslot(array);
+	while (string[start])
+	{
+		length = find_length(string, &start);
+		array[i] = ft_substr(string, start, length);
+		if (!(array[i]))
+		{
+			free_array(array);    
+			return (NULL);
+		}
+		start += length;
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
 }
 
 static int	get_total(char **argv, int i)
 {
 	int	total;
 	
-    total = 0;
+	total = 0;
 	while (argv[i])
 	{
 		if (!is_valid_nbrs(argv[i]))
