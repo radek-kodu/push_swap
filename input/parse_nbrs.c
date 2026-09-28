@@ -6,18 +6,17 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/28 20:19:26 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/28 20:26:10 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 /*
-Insert flags.start as parameter int start.
-TO DO: fix possible memory leaks
+Insert flags.start as parameter (int start).
 */
 
 static char	**add_to_array(char **array, char *string);
-static int	get_total(char **argv, int i);
+static long int	get_total(char **argv, int i);
 static int	find_freeslot(char **array);
 
 char	**parse_nbrs(char **argv, int start)
@@ -37,11 +36,8 @@ char	**parse_nbrs(char **argv, int start)
 	while (argv[start])
 	{
 		array = add_to_array(array, argv[start]);
-		if (!array)
-		{
-			free_array(array);    
+		if (!array)  
 			return (NULL);
-		}
 		start++;
 	}
 	return (array);
@@ -71,9 +67,9 @@ static char **add_to_array(char **array, char *string)
 	return (array);
 }
 
-static int	get_total(char **argv, int i)
+static long int	get_total(char **argv, int i)
 {
-	int	total;
+	long int	total;
 	
 	total = 0;
 	while (argv[i])
@@ -81,6 +77,8 @@ static int	get_total(char **argv, int i)
 		if (!is_valid_nbrs(argv[i]))
 			return (-1);
 		total += count_numbers(argv[i]);
+		if (total > INT_MAX)
+			return (-1);
 		i++;
 	}
 	return (total);
