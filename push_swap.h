@@ -16,12 +16,12 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define INT_MAX 2147483647
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <limits.h>
 
 typedef struct s_node
 {
