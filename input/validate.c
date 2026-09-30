@@ -11,11 +11,13 @@ Handles checking whether the numbers are acceptable.
 
 */
 
-int	**validate(char **array)
+t_node	validate(char **array)
 {
 	int			i;
 	long int	temp;
+	t_node		stack;
 
+	stack = list_init(stack);
 	while (array[i])
 	{
 		temp = atoi_plus(array[i]);
@@ -23,12 +25,13 @@ int	**validate(char **array)
 		if (temp < INT_MIN || temp > INT_MAX)
 			return (NULL);
 		// cast to int
-		array[i] = (int *)(temp);
+		if (check_duplicates((int *)(temp), stack))
+			return (NULL);
+		else
+			//add temp to stack
 		i++;
 	}
-	// detect duplicates
-	if (find_duplicates(array))
-		return (NULL);
-	// return an array of ints
-	return (array);
+	free_array(array);
+	// return the stack
+	return (stack);
 }

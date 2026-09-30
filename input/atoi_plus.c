@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   atoi_plus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 20:13:02 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/09/17 17:29:00 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/09/30 19:48:08 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int *atoi_plus(int argc, char **argv)
+int *atoi_plus(char *string)
 {
     int *nbs;
     int i;
