@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/28 20:09:24 by camille          ###   ########.fr       */
+/*   Updated: 2026/09/30 13:34:52 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,14 @@
 int	is_empty_string(char *input)
 {
 	int	i;
-	int char_flag;
 
 	i = 0;
-	char_flag = 0;
 	while (input[i])
 	{
 		if (!(input[i] == ' ' || (input[i] >= 9 && input[i] <= 13)))
-			char_flag++;
+			return (0);
 		i++;
 	}
-	if (char_flag > 0)
-		return (0);
 	return (1);
 }
 
