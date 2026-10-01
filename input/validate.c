@@ -25,7 +25,7 @@ t_node	*validate(char **array)
 		temp_value = ft_atoi(array[i]);
 		if (temp_value < INT_MIN || temp_value > INT_MAX || is_duplicate((int)(temp_value), stack))
 		{
-			free_stack(stack); // create function            
+			free_stack(stack);            
 			return (NULL);
 		}
 		new = new_node(temp_value);

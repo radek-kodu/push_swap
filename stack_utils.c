@@ -159,5 +159,12 @@ void	stack_add_back(t_node **stack, t_node *new)
 
 void	free_stack(t_node *stack)
 {
+	t_node	*temp;
 
+	while (stack)
+	{
+		temp = stack->next;
+		free(stack);
+		stack = temp;
+	}	
 }
