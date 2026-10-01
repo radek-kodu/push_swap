@@ -23,15 +23,12 @@ t_node	*validate(char **array)
 	while (array[i])
 	{
 		temp_value = ft_atoi(array[i]);
-		if (temp_value < INT_MIN || temp_value > INT_MAX || is_duplicate((int)(temp_value), stack))
-		{
-			free_stack(stack);            
-			return (NULL);
-		}
+		if (temp_value < INT_MIN || temp_value > INT_MAX || is_duplicate((int)temp_value, stack))
+			return (free_stack(stack));          
 		new = new_node(temp_value);
 		if (new == NULL)
-			return (NULL);
-		stack_add_back(&stack, new_node(temp_value));
+			return (free_stack(stack));            
+		stack_add_back(&stack, new);
 		i++;
 	}
 	free_array(array);

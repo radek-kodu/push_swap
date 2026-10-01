@@ -157,7 +157,7 @@ void	stack_add_back(t_node **stack, t_node *new)
 	current->next = new;
 }
 
-void	free_stack(t_node *stack)
+t_node	*free_stack(t_node *stack)
 {
 	t_node	*temp;
 
@@ -166,5 +166,6 @@ void	free_stack(t_node *stack)
 		temp = stack->next;
 		free(stack);
 		stack = temp;
-	}	
+	}
+	return (NULL);	
 }
