@@ -142,13 +142,17 @@ int	is_duplicate(int nbr, t_node *stack)
 	return (1);
 }
 
-void    stack_add_back(t_node *stack, t_node *new)
+void    stack_add_back(t_node **stack, t_node *new)
 {
-	if (stack == NULL)
-		stack = new;
-	while (stack)
+	t_node *current;
+
+	if (*stack == NULL)
 	{
-		if (stack->next == NULL)
-			stack->next = new;
+		*stack = new;
+		return ;
 	}
+	current = *stack;
+	while (current->next)
+		current = current->next;
+	current->next = new;
 }

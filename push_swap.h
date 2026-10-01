@@ -79,6 +79,7 @@ int     get_stack_size(t_node *a);
 void	bring_node_top(t_node **a, int node_pos);
 t_node	*new_node(int value);
 int	    is_duplicate(int nbr, t_node *stack);
+void    stack_add_back(t_node **stack, t_node *new);
 /*Sort Algorithms*/
 void	sort_two(t_node **a);
 void	sort_three(t_node **a);
