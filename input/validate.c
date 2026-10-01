@@ -7,7 +7,7 @@ Handles checking whether the numbers are acceptable.
 * Check INT_MIN / INT_MAX boundaries
 * Cast to int
 * Detect duplicates
-* Returns an array of ints
+* Returns a stack of ints
 
 */
 
@@ -19,25 +19,21 @@ t_node	*validate(char **array)
 
 	temp = 0;
 	i = 0;
-	stack = new_node(temp);
-	if (!stack)
-		return (NULL);
+	stack = NULL;
 	while (array[i])
 	{
 		temp = ft_atoi(array[i]);
 		if (temp < INT_MIN || temp > INT_MAX)
 			return (NULL);
-		// cast to int
-		if (is_duplicate((int *)(temp), stack))
+		if (is_duplicate((int)(temp), stack))
 		{
-			free_stack(stack);            
+			free(stack);            
 			return (NULL);
 		}
-		//add_node(stack, temp)
+		stack_add_back(stack, new_node(temp));
 		i++;
 	}
 	free_array(array);
-	// return the stack
 	return (stack);
 }
 

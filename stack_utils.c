@@ -10,10 +10,10 @@ Helper functions for building, inspecting, and cleaning up the linked-list stack
 * bring_node_top: pushes a node to the top of the stack
 * new_node: creates a new stack with initialized values
 * is_duplicate: checks if int value already exists in the stack
+* stack_add_back: adds a new node at the bottom of the stack
 
 ----------
 Other possible functions:
-stack_add_back: adds a new node at the end || void stack_add_back(t_node **a, t_node *new);
 free_stack: destroys the stack || void    free_stack(t_node **a);
 
 */
@@ -126,7 +126,7 @@ t_node	*new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
-    node->index = 0;
+	node->index = 0;
 	node->next = NULL;
 	return (node);
 }
@@ -137,7 +137,18 @@ int	is_duplicate(int nbr, t_node *stack)
 	{
 		if (nbr == stack->value)
 			return (0);
-        stack = stack->next;
+		stack = stack->next;
 	}
 	return (1);
+}
+
+void    stack_add_back(t_node *stack, t_node *new)
+{
+	if (stack == NULL)
+		stack = new;
+	while (stack)
+	{
+		if (stack->next == NULL)
+			stack->next = new;
+	}
 }
