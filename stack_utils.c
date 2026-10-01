@@ -8,10 +8,10 @@ Helper functions for building, inspecting, and cleaning up the linked-list stack
 * get_node_position: returns an int indicating the position of a node
 * get_stack_size: returns the number of nodes
 * bring_node_top: pushes a node to the top of the stack
+* new_node: creates a new stack || t_node	*new_node(int value);
 
 ----------
 Other possible functions:
-new_node: creates a new stack || t_node	*new_node(int value);
 stack_add_back: adds a new node at the end || void stack_add_back(t_node **a, t_node *new);
 free_stack: destroys the stack || void    free_stack(t_node **a);
 
@@ -115,4 +115,16 @@ void	bring_node_top(t_node **a, int node_pos)
 			node_pos++;
 		}
 	}
+}
+
+t_node	*new_node(int value)
+{
+	t_node	*node;
+	
+	node = malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->next = NULL;
+	return (node);
 }

@@ -11,18 +11,20 @@ Handles checking whether the numbers are acceptable.
 
 */
 
-t_node	validate(char **array)
+t_node	*validate(char **array)
 {
 	int			i;
 	long    	temp;
-	t_node		stack;
+	t_node		*stack;
 
-    stack = create_stack();
+    temp = 0;
     i = 0;
+    stack = new_node(temp);
+    if (!stack)
+        return (NULL);
 	while (array[i])
 	{
 		temp = ft_atoi(array[i]);
-		// check INT_MIN / INT_MAX boundaries
 		if (temp < INT_MIN || temp > INT_MAX)
 			return (NULL);
 		// cast to int
