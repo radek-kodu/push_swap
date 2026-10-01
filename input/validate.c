@@ -1,5 +1,3 @@
-#include "../push_swap.h"
-
 /*
 Handles checking whether the numbers are acceptable.
 
@@ -10,6 +8,7 @@ Handles checking whether the numbers are acceptable.
 * Returns a stack of ints
 
 */
+#include "../push_swap.h"
 
 t_node	*validate(char **array)
 {
@@ -38,4 +37,3 @@ t_node	*validate(char **array)
 	free_array(array);
 	return (stack);
 }
-

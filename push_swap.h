@@ -71,6 +71,7 @@ char	*ft_substr(char const *s, unsigned int start, int len);
 char	**calloc_plus(int count, int size);
 int	    ft_strcmp(const char *s1, const char *s2);
 void    free_array(char **array);
+
 /*Stack Utilities*/
 t_node  *lastnode(t_node *a);
 t_node	*find_min(t_node *a);
@@ -78,8 +79,10 @@ int     get_node_position(t_node *a, t_node *node);
 int     get_stack_size(t_node *a);
 void	bring_node_top(t_node **a, int node_pos);
 t_node	*new_node(int value);
-int	    is_duplicate(int nbr, t_node *stack);
-void    stack_add_back(t_node **stack, t_node *new);
+int		is_duplicate(int nbr, t_node *stack);
+void	stack_add_back(t_node **stack, t_node *new);
+void	free_stack(t_node *stack);
+
 /*Sort Algorithms*/
 void	sort_two(t_node **a);
 void	sort_three(t_node **a);
