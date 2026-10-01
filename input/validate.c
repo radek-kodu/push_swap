@@ -17,11 +17,11 @@ t_node	*validate(char **array)
 	long    	temp;
 	t_node		*stack;
 
-    temp = 0;
-    i = 0;
-    stack = new_node(temp);
-    if (!stack)
-        return (NULL);
+	temp = 0;
+	i = 0;
+	stack = new_node(temp);
+	if (!stack)
+		return (NULL);
 	while (array[i])
 	{
 		temp = ft_atoi(array[i]);
@@ -30,9 +30,9 @@ t_node	*validate(char **array)
 		// cast to int
 		if (is_duplicate((int *)(temp), stack))
 		{
-            free_stack(stack);            
-            return (NULL);
-        }
+			free_stack(stack);            
+			return (NULL);
+		}
 		//add_node(stack, temp)
 		i++;
 	}
@@ -40,3 +40,4 @@ t_node	*validate(char **array)
 	// return the stack
 	return (stack);
 }
+

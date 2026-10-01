@@ -8,7 +8,8 @@ Helper functions for building, inspecting, and cleaning up the linked-list stack
 * get_node_position: returns an int indicating the position of a node
 * get_stack_size: returns the number of nodes
 * bring_node_top: pushes a node to the top of the stack
-* new_node: creates a new stack || t_node	*new_node(int value);
+* new_node: creates a new stack with initialized values
+* is_duplicate: checks if int value already exists in the stack
 
 ----------
 Other possible functions:
@@ -125,6 +126,18 @@ t_node	*new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+    node->index = 0;
 	node->next = NULL;
 	return (node);
+}
+
+int	is_duplicate(int nbr, t_node *stack)
+{
+	while (stack)
+	{
+		if (nbr == stack->value)
+			return (0);
+        stack = stack->next;
+	}
+	return (1);
 }
