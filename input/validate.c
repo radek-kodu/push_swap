@@ -14,21 +14,24 @@ Handles checking whether the numbers are acceptable.
 t_node	validate(char **array)
 {
 	int			i;
-	long int	temp;
+	long    	temp;
 	t_node		stack;
 
-	stack = list_init(stack);
+    stack = create_stack();
+    i = 0;
 	while (array[i])
 	{
-		temp = atoi_plus(array[i]);
+		temp = ft_atoi(array[i]);
 		// check INT_MIN / INT_MAX boundaries
 		if (temp < INT_MIN || temp > INT_MAX)
 			return (NULL);
 		// cast to int
-		if (check_duplicates((int *)(temp), stack))
-			return (NULL);
-		else
-			//add temp to stack
+		if (is_duplicate((int *)(temp), stack))
+		{
+            free_stack(stack);            
+            return (NULL);
+        }
+		//add_node(stack, temp)
 		i++;
 	}
 	free_array(array);
