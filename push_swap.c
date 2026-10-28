@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/09/17 11:46:05 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/10/28 18:35:36 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int *sorting(int *nbs, int disorder)
 {
 
 }
-int push_swap(int argc, char **argv)
+void push_swap(int argc, char **argv)
 {
     int *nbs;
     int disorder;
@@ -28,6 +28,8 @@ int push_swap(int argc, char **argv)
     if (nbs == NULL)
         return (write(2, "Error\n", 6), free(nbs), 1);
     disorder = compute_disorder(nbs, argc);
+    if (disorder == 0)
+        return ;
     nbs = sorting(nbs, disorder);
 }
 
