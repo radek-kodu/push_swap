@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:28:04 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/23 12:28:07 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/03 21:08:02 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ static void	reverse_rotate(t_node **x)
 {
 	t_node	*temp;
 	t_node	*newlast;
-	// handle if x is null
-	if (*x == NULL)
-		return ;
-	// handle if x-> next is null (just 1 node)
-	if ((*x)->next == NULL)
+	// handle if 0 or 1 node
+	if (*x == NULL || (*x)->next == NULL)
 		return ;
 	// get last node of x and save to temp
 	temp = lastnode(*x);
@@ -39,7 +36,7 @@ static void	reverse_rotate(t_node **x)
 	newlast = secondlast(*x);
 	newlast->next = NULL;
 	// reattach temp to before the first node of x (making it first node)
-	temp->next = x;
+	temp->next = *x;
 	// make x point to new first node
 	*x = temp;
 }
