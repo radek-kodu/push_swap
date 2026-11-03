@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/28 23:08:50 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/01 22:35:16 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ Values of struct:
 		0 - no strategy flag
 		1 - adaptive (default)
 		2 - simple
-		3 - complex
-		4 - medium
+		3 - medium
+		4 - complex
 	bench - 0 or 1, if "--bench" is included or not
 	start - 0 to 3, starting index of the numbers
 	
