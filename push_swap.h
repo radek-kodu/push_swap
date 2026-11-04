@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/09/17 13:12:47 by camille          ###   ########.fr       */
-=======
-/*   Updated: 2026/09/17 17:17:58 by rpokorny         ###   ########.fr       */
->>>>>>> 4970769 (some experiments)
+/*   Updated: 2026/11/04 12:16:34 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +38,7 @@ typedef struct	s_flags
 	int	strategy;
 	int	bench;
 	int	start;
+	int	disorder;
 }	t_flags;
 
 int compute_disorder(int *nbs, size_t size);
@@ -59,7 +56,7 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 /*Input Utilities*/
 char	**parse_nbrs(char **argv, int start);
-t_flags	*parse_flags(char **argv);
+t_flags	*parse_flags(char **argv, t_flags *flags);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);

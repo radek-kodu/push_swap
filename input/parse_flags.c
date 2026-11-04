@@ -5,10 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/04 13:09:59 by jrosette         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2026/11/04 13:12:17 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+
+
 
 #include "../push_swap.h"
 
@@ -49,9 +53,9 @@ char	*convert_to_string(char **argv)
 }
 
 // Does not check argc
-t_flags	*parse_flags(char **argv)
+t_flags	*parse_flags(char **argv, t_flags *flags)
 {
-	t_flags	*flags;
+	//t_flags	*flags;
 	int		i;
 	
 	flags = malloc(sizeof(t_flags));
