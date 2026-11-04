@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/28 23:08:50 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/04 12:15:58 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static t_flags	*assign_flag(char *string, t_flags *flags);
 static int	is_flag_available(char *string, t_flags *flags);
 
 // Does not check argc
-t_flags	*parse_flags(char **argv)
+t_flags	*parse_flags(char **argv, t_flags *flags)
 {
-	t_flags	*flags;
+	//t_flags	*flags;
 	int		i;
 	
 	flags = malloc(sizeof(t_flags));
