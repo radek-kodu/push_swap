@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/23 12:28:20 by jrosette          #+#    #+#             */
+/*   Updated: 2026/11/03 21:03:49 by camille          ###   ########.fr       */
+=======
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:28:20 by jrosette          #+#    #+#             */
 /*   Updated: 2026/11/04 12:44:43 by rpokorny         ###   ########.fr       */
+>>>>>>> 0f834d7bc39f0c65bf06b9824dcb2bc8b27e2f76
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +70,8 @@ void	ss(t_node **a, t_node **b)
 {
 	swap_toptwo(a);
 	swap_toptwo(b);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0f834d7bc39f0c65bf06b9824dcb2bc8b27e2f76

@@ -3,12 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/04 12:15:58 by rpokorny         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2026/11/04 13:12:17 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+
+
 
 #include "../push_swap.h"
 
@@ -20,8 +24,8 @@ Values of struct:
 		0 - no strategy flag
 		1 - adaptive (default)
 		2 - simple
-		3 - complex
-		4 - medium
+		3 - medium
+		4 - complex
 	bench - 0 or 1, if "--bench" is included or not
 	start - 0 to 3, starting index of the numbers
 	
@@ -37,6 +41,16 @@ For error handling, start = -1
 static int	is_validflag(char *string);
 static t_flags	*assign_flag(char *string, t_flags *flags);
 static int	is_flag_available(char *string, t_flags *flags);
+
+char	*convert_to_string(char **argv)
+{
+	char	*user_input;
+
+	//get length of argv (ft_strlen)
+	//check for unpaired quotation marks (single and double)?
+	//copy argv to user_input (not including quotation marks)
+	//return user_input
+}
 
 // Does not check argc
 t_flags	*parse_flags(char **argv, t_flags *flags)
