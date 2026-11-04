@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 16:47:02 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/01 22:35:16 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/04 13:09:59 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ For error handling, start = -1
 static int	is_validflag(char *string);
 static t_flags	*assign_flag(char *string, t_flags *flags);
 static int	is_flag_available(char *string, t_flags *flags);
+
+char	*convert_to_string(char **argv)
+{
+	char	*user_input;
+
+	//get length of argv (ft_strlen)
+	//check for unpaired quotation marks (single and double)?
+	//copy argv to user_input (not including quotation marks)
+	//return user_input
+}
 
 // Does not check argc
 t_flags	*parse_flags(char **argv)
