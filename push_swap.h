@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/04 15:10:26 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/04 19:40:58 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ t_node	*free_stack(t_node *stack);
 void	sort_two(t_node **a);
 void	sort_three(t_node **a);
 void    sort_small(t_node **a, t_node **b);
+void	sort_medium(t_node **a, t_node **b, int argc);
 
 #endif

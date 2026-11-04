@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/11/04 13:12:17 by jrosette         ###   ########.fr       */
+/*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
+/*   Updated: 2026/11/04 19:35:05 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
