@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/04 12:16:34 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/04 15:10:26 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef struct s_node
 	int				index;
 	struct s_node	*next;
 }					t_node;
+
+typedef struct s_data
+{
+	int	size;
+	int	**chunk;
+	int	*tp;
+}	t_data;
 
 typedef struct s_overnode
 {
