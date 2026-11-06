@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 14:17:18 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/04 20:01:15 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/06 15:55:35 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void    push_chunk(t_node **a, t_node **b, int chunk[3])
         {
             pb(a, b);
             i++;
-            if ((*b)->index < chunk[1])
-                rb(b);
+            //if ((*b)->index < chunk[1])
+            //    rb(b);
         }
         else
             ra(a);
@@ -58,7 +58,9 @@ void	sort_medium(t_node **a, t_node **b, int argc)
 {
 	int		chunk_size;
 	int		chunk[3];
+	int		size;
 
+	size = argc - 1;
 	chunk[0] = 0;
 	chunk_size = chunk_sizer(argc);
 	chunk[2] = chunk_size;
@@ -67,5 +69,12 @@ void	sort_medium(t_node **a, t_node **b, int argc)
 	{
 		push_chunk(a, b, chunk);
 		chunk_mover(chunk, chunk_size, argc);
+	}
+	while (size >= 0)
+	{
+		while (size != (*b)->index)
+			rb(b);
+		pa(a, b);
+		size--;
 	}
 }
