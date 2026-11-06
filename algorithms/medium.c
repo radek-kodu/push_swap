@@ -6,13 +6,13 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 14:17:18 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/06 15:55:35 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/06 20:43:14 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	chunk_sizer(int argc)
+static int	chunk_sizer(int argc)
 {
 	int	devider;
 	int	chunk_size;
@@ -25,54 +25,50 @@ int	chunk_sizer(int argc)
 	return (chunk_size);
 }
 
-int	*chunk_mover(int chunk[3], int chunk_size, int argc)
+static void	chunk_mover(int *start, int *top, int chunk_size, int size)
 {
-	chunk[0] = chunk[2];
-	chunk[2] = chunk[0] + chunk_size;
-	if (chunk[2] > argc)
-		chunk[2] = argc;
-	chunk[1] = (chunk[0] + chunk[2]) / 2;
-	return (chunk);
+	*start = *top;
+	*top = *top + chunk_size;
+	if (*top > size)
+		*top = size;
 }
 
-void    push_chunk(t_node **a, t_node **b, int chunk[3])
+static void	push_chunk(t_node **a, t_node **b, int start, int top)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (*a && i < chunk[2] - chunk[0])
-    {
-        if ((*a)->index >= chunk[0] && (*a)->index < chunk[2])
-        {
-            pb(a, b);
-            i++;
-            //if ((*b)->index < chunk[1])
-            //    rb(b);
-        }
-        else
-            ra(a);
-    }
+	i = 0;
+	while (*a && i < top - start)
+	{
+		if ((*a)->index >= start && (*a)->index < top)
+		{
+			pb(a, b);
+			i++;
+		}
+		else
+			ra(a);
+	}
 }
 
 void	sort_medium(t_node **a, t_node **b, int argc)
 {
-	int		chunk_size;
-	int		chunk[3];
-	int		size;
+	int	chunk_size;
+	int	start;
+	int	top;
+	int	size;
 
 	size = argc - 1;
-	chunk[0] = 0;
-	chunk_size = chunk_sizer(argc);
-	chunk[2] = chunk_size;
-	chunk[1] = chunk[2] / 2;
-	while (chunk[0] < argc)
+	start = 0;
+	chunk_size = chunk_sizer(size);
+	top = chunk_size;
+	while (start < size)
 	{
-		push_chunk(a, b, chunk);
-		chunk_mover(chunk, chunk_size, argc);
+		push_chunk(a, b, start, top);
+		chunk_mover(&start, &top, chunk_size, size);
 	}
-	while (size >= 0)
+	while (size - 1 >= 0)
 	{
-		while (size != (*b)->index)
+		while (*b && size - 1 != (*b)->index)
 			rb(b);
 		pa(a, b);
 		size--;
