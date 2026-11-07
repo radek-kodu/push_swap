@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/07 13:18:55 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:48:11 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,43 +34,82 @@ Possible options:
 For error handling, start = -1 
 */
 
-// static int	is_validflag(char *string);
-// static t_flags	*assign_flag(char *string, t_flags *flags);
-// static int	is_flag_available(char *string, t_flags *flags);
+static int	is_validflag(char *string);
+static t_flags	*assign_flag(char *string, t_flags *flags);
+static int	is_flag_available(char *string, t_flags *flags);
+static char	*get_flag(char *args, int *i);
 
-
-// Does not check argc
-static t_flags	*parse_flags(char **argv, t_flags *flags)
+t_flags	*parse_flags(char *args)
 {
-	//t_flags	*flags;
+	t_flags	*flags;
 	int		i;
-	
+	char	*flag;
+
 	flags = malloc(sizeof(t_flags));
 	if (!flags)
 		return (NULL);
 	(*flags).strategy = 0;
 	(*flags).bench = 0;
 	(*flags).start = 0;
-	i = 1;
 	
-	while (argv[i] && !(is_valid_nbrs(argv[i])))
-	{
-		if (!is_validflag(argv[i]))
+	i = 0;
+	while (args[i])
+	{		
+		while (args[i] == ' ')		
+			i++;	
+		flag = get_flag(args, &i);
+		// printf("flag: %s\n", flag);
+		if (flag)
 		{
-			(*flags).start = -1;	
+			flags = assign_flag(flag, flags);
+		}
+		else if ((*flags).start == -1)
+		{		
+			free(flag);			
 			return (flags);
 		}
-		flags = assign_flag(argv[i], flags);
-		if ((*flags).start == -1)
-			return (flags);
-		i++;	
+		else
+			break;
+		i++;
 	}
 	(*flags).start = i;
+	free(flag);
 	return (flags);
 }
 
-// Function that checks if the flag is valid
-// only acceptable strings are: --bench, --simple, --medium, --complex, --adaptive
+// returns a flag from input
+static char	*get_flag(char *args, int *i)
+{
+	char	*flag;
+	int		j;
+	int		len;
+	int		temp;
+
+	// printf("index in value: %d\n", *i);
+	temp = *i;
+	len = 0;
+	while (args[temp++] && args[temp++] != ' ')
+		len++;
+	flag = malloc(len + 1);
+	if (!flag)
+		return (NULL);
+	j = 0;
+	while (args[*i])
+	{
+		if (args[*i] == ' ' || is_digit(args[*i]))
+			break ;
+		flag[j] = args[*i];
+		(*i)++;
+		j++;
+	}
+	flag[j] = '\0';
+	// printf("index out value: %d\n", *i);
+	if (is_validflag(flag))
+		return (flag);
+	else
+		return (NULL);
+}
+
 static int	is_validflag(char *string)
 {
 	
@@ -122,3 +161,46 @@ static int	is_flag_available(char *string, t_flags *flags)
 		return (0);
 	return (1);
 }
+
+int main(void)
+{
+	t_flags	*flags;
+	char str[] = "--simple 10 5 2 6";
+	
+	flags = parse_flags(str);
+	printf("%d\n", (*flags).strategy);
+	printf("%d\n", (*flags).bench);
+	printf("%d\n", (*flags).start);
+	return (0);
+}
+
+/*
+static t_flags	*parse_flags(char **argv, t_flags *flags)
+{
+	//t_flags	*flags;
+	int		i;
+	
+	flags = malloc(sizeof(t_flags));
+	if (!flags)
+		return (NULL);
+	(*flags).strategy = 0;
+	(*flags).bench = 0;
+	(*flags).start = 0;
+	i = 1;
+	
+	while (argv[i] && !(is_valid_nbrs(argv[i])))
+	{
+		if (!is_validflag(argv[i]))
+		{
+			(*flags).start = -1;	
+			return (flags);
+		}
+		flags = assign_flag(argv[i], flags);
+		if ((*flags).start == -1)
+			return (flags);
+		i++;	
+	}
+	(*flags).start = i;
+	return (flags);
+}
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/30 13:34:52 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/07 17:40:24 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,11 @@ int	find_length(char *string, int *start)
 	return (end - *start);
 }
 
-char	*ft_substr(char const *s, unsigned int start, int len)
+char	*ft_substr(char const *s, int start, int len)
 {
-	unsigned int	j;
-	char			*substr;
-	int 			slen;
+	int		j;
+	char	*substr;
+	int 	slen;
 
 	j = 0;
 	if (!s)
@@ -142,7 +142,7 @@ char	**calloc_plus(int count, int size)
 	char	**array;
 	int		i;
 
-	if (count && size > (SIZE_MAX / count))
+	if (count && (unsigned long)size > (SIZE_MAX / count))
 		return (NULL);
 	array = malloc(count * size);
 	if (array == NULL)
@@ -154,21 +154,6 @@ char	**calloc_plus(int count, int size)
 		i++;
 	}
 	return (array);
-}
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if ((unsigned char)s1[i] == (unsigned char)s2[i])
-		    i++;
-        else
-            return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	}
-    return (0);
 }
 
 void    free_array(char **array)
