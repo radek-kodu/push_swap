@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 22:24:01 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/07 13:09:42 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 14:10:38 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	maximal_bit(int argc)
 	return (max_bit);
 }
 
-void	complex(t_data *data, int argc)
+void	sort_complex(t_data *data, int argc)
 {
 	int	bit;
 	int	max_bit;
