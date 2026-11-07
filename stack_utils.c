@@ -1,6 +1,7 @@
 /*
 
-Helper functions for building, inspecting, and cleaning up the linked-list stack. 
+Helper functions for building, inspecting, 
+and cleaning up the linked-list stack. 
 
 * is_sorted: checks if the stack is sorted 
 * last_node: returns a pointer to the last node
@@ -22,7 +23,6 @@ free_stack: destroys the stack || void    free_stack(t_node **a);
 
 int	is_sorted(t_node *a)
 {
-	// 1 is sorted, 0 is not sorted
 	if (!a)
 		return (1);
 	while (a->next != NULL)
@@ -97,7 +97,7 @@ void	bring_node_top(t_node **a, int node_pos)
 	int	stack_size;
 
 	stack_size = get_stack_size(*a);
-	middle_pos = stack_size/2;
+	middle_pos = stack_size / 2;
 	// if node_pos < middle_pos (push up until node_pos == 0)
 	if (node_pos <= middle_pos)
 	{
@@ -106,7 +106,7 @@ void	bring_node_top(t_node **a, int node_pos)
 			ra(a);
 			node_pos--;
 		}
-	} 
+	}
 	// if node_pos > middle_pos (push down until node_pos wraps around to 0)
 	else
 	{
@@ -121,7 +121,7 @@ void	bring_node_top(t_node **a, int node_pos)
 t_node	*new_node(int value)
 {
 	t_node	*node;
-	
+
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
@@ -144,7 +144,7 @@ int	is_duplicate(int nbr, t_node *stack)
 
 void	stack_add_back(t_node **stack, t_node *new)
 {
-	t_node *current;
+	t_node	*current;
 
 	if (*stack == NULL)
 	{
