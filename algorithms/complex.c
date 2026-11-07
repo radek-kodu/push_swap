@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 22:24:01 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/06 20:43:58 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 13:09:42 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	maximal_bit(int argc)
 	int	size;
 	int	max_bit;
 
-	size = argc - 1;
+	size = argc - 2;
 	max_bit = 0;
 	while (size > 0)
 	{
@@ -27,7 +27,7 @@ static int	maximal_bit(int argc)
 	return (max_bit);
 }
 
-void	complex(t_node **a, t_node **b, int argc)
+void	complex(t_data *data, int argc)
 {
 	int	bit;
 	int	max_bit;
@@ -38,16 +38,16 @@ void	complex(t_node **a, t_node **b, int argc)
 	while (bit < max_bit)
 	{
 		i = 0;
-		while (i < argc - 2)
+		while (i < argc - 1)
 		{
-			if ((((*a)->index >> bit) & 1) == 0)
-				pb(a, b);
+			if (((data->a->index >> bit) & 1) == 0)
+				pb(data);
 			else
-				ra(a);
+				ra(data);
 			i++;
 		}
-		while ((*b) != NULL)
-			pa(a, b);
+		while ((data->b) != NULL)
+			pa(data);
 		bit++;
 	}
 }

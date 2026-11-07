@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/18 11:06:49 by jrosette          #+#    #+#             */
+/*   Updated: 2026/11/07 13:08:29 by rpokorny         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-void	sort_simple(t_node **a, t_node **b)
+void	sort_simple(t_data *data)
 {
 	int	node_pos;
 	
-	while (get_stack_size(*a) > 3)
+	while (get_stack_size(data->a) > 3)
 	{
-		node_pos = get_node_position(*a, find_min(*a));
-		bring_node_top(a, node_pos);
-		pb(a,b);
+		node_pos = get_node_position(data->a, find_min(data->a));
+		bring_node_top(&data->a, node_pos);
+		pb(data);
 	}
-	sort_three(a);
-	while (get_stack_size(*b) > 0)
-		pa(a,b);
+	sort_three(data->a);
+	while (get_stack_size(data->b) > 0)
+		pa(data);
 }
 

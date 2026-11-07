@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 14:17:18 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/06 20:43:14 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 13:03:15 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,24 @@ static void	chunk_mover(int *start, int *top, int chunk_size, int size)
 		*top = size;
 }
 
-static void	push_chunk(t_node **a, t_node **b, int start, int top)
+static void	push_chunk(t_data *data, int start, int top)
 {
 	int	i;
 
 	i = 0;
-	while (*a && i < top - start)
+	while (data->a && i < top - start)
 	{
-		if ((*a)->index >= start && (*a)->index < top)
+		if (data->a->index >= start && data->a->index < top)
 		{
-			pb(a, b);
+			pb(data);
 			i++;
 		}
 		else
-			ra(a);
+			ra(data);
 	}
 }
 
-void	sort_medium(t_node **a, t_node **b, int argc)
+void	sort_medium(t_data *data, int argc)
 {
 	int	chunk_size;
 	int	start;
@@ -63,14 +63,14 @@ void	sort_medium(t_node **a, t_node **b, int argc)
 	top = chunk_size;
 	while (start < size)
 	{
-		push_chunk(a, b, start, top);
+		push_chunk(data, start, top);
 		chunk_mover(&start, &top, chunk_size, size);
 	}
 	while (size - 1 >= 0)
 	{
-		while (*b && size - 1 != (*b)->index)
-			rb(b);
-		pa(a, b);
+		while (data->b && size - 1 != data->b->index)
+			rb(data);
+		pa(data);
 		size--;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:27:55 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/23 12:27:58 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:55:58 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 static void	push(t_node **dest, t_node **src)
 {
 	t_node	*temp;
-	// if src is empty
+
 	if (*src == NULL)
 		return ;
-	// Save top node of src
 	temp = *src;
-	// Make src point to next node
 	*src = (*src)->next;
-	// Add saved first node to front of dest
 	temp->next = *dest;
-	// Make dest point to saved node
 	*dest = temp;
 }
 
-void	pa(t_node **a, t_node **b)
+void	pa(t_data *data)
 {
-	push(a,b);
+	data->bench.pa++;
+	write (1, "pa\n", 3);
+	push (&data->a, &data->b);
 }
 
-void	pb(t_node **a, t_node **b)
+void	pb(t_data *data)
 {
-	push(b,a);
+	data->bench.pb++;
+	write (1, "pb\n", 3);
+	push (&data->b, &data->a);
 }

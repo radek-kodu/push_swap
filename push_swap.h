@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/06 20:43:42 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 13:04:08 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-typedef struct s_data
-{
-	int	size;
-	int	**chunk;
-	int	*tp;
-}	t_data;
-
 typedef struct s_overnode
 {
 	t_node	*top;
@@ -48,19 +41,41 @@ typedef struct	s_flags
 	int	disorder;
 }	t_flags;
 
+typedef struct s_data
+{
+	t_node *a;
+	t_node *b;
+	t_bench bench;
+}	t_data;
+
+typedef struct s_bench
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_bench;
+
 int compute_disorder(int *nbs, size_t size);
 /*Operations*/
-void	sa(t_node **a);
-void	sb(t_node **b);
-void	ss(t_node **a, t_node **b);
-void	pa(t_node **a, t_node **b);
-void	pb(t_node **a, t_node **b);
-void	ra(t_node **a);
-void	rb(t_node **b);
-void	rr(t_node **a, t_node **b);
-void	rra(t_node **a);
-void	rrb(t_node **b);
-void	rrr(t_node **a, t_node **b);
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
+void	pa(t_data *data);
+void	pb(t_data *data);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 /*Input Utilities*/
 char	**parse_nbrs(char **argv, int start);
 t_flags	*parse_flags(char **argv, t_flags *flags);
@@ -88,10 +103,10 @@ void	stack_add_back(t_node **stack, t_node *new);
 t_node	*free_stack(t_node *stack);
 
 /*Sort Algorithms*/
-void	sort_two(t_node **a);
-void	sort_three(t_node **a);
-void    sort_small(t_node **a, t_node **b);
-void	sort_medium(t_node **a, t_node **b, int argc);
-void	complex(t_node **a, t_node **b, int argc);
+void	sort_two(t_data *data);
+void	sort_three(t_data *data);
+void    sort_small(t_data *data);
+void	sort_medium(t_data *data, int argc);
+void	complex(t_data *data, int argc);
 
 #endif

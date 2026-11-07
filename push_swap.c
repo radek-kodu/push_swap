@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/04 12:18:40 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:22:52 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void push_swap(int argc, char **argv)
 {
     int     *nbs;
     t_flags *flags;
+    t_data	data;
 
-
+    data = (t_data){0};
     nbs = malloc(argc * sizeof(int));
     if (nbs == NULL)
         return (write(2, "Error\n", 6), free(nbs), 1);
