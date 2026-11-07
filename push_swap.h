@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/07 13:39:46 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:36:41 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,6 @@ typedef struct	s_flags
 	int	disorder;
 }	t_flags;
 
-typedef struct s_data
-{
-	t_node *a;
-	t_node *b;
-	t_bench bench;
-}	t_data;
-
 typedef struct s_bench
 {
 	int	sa;
@@ -62,6 +55,13 @@ typedef struct s_bench
 	int	rrb;
 	int	rrr;
 }	t_bench;
+
+typedef struct s_data
+{
+	t_node *a;
+	t_node *b;
+	t_bench bench;
+}	t_data;
 
 int compute_disorder(int *nbs, size_t size);
 /*Operations*/
@@ -78,7 +78,7 @@ void	rrb(t_data *data);
 void	rrr(t_data *data);
 /*Input Utilities*/
 char	**parse_nbrs(char **argv, int start);
-t_flags	*parse_flags(char **argv, t_flags *flags);
+t_flags	*parse_flags(char *args);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);
@@ -86,11 +86,13 @@ int		is_sign(char c);
 int	    is_valid_nbrs(char *input);
 int	    count_numbers(char *string);
 int	    find_length(char *string, int *start);
-char	*ft_substr(char const *s, unsigned int start, int len);
+char	*ft_substr(char const *s, int start, int len);
 char	**calloc_plus(int count, int size);
 int	    ft_strcmp(const char *s1, const char *s2);
 void    free_array(char **array);
 int		ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+void	*ft_memcpy(void *dst, const void *src, int n);
 
 /*Stack Utilities*/
 t_node  *lastnode(t_node *a);
