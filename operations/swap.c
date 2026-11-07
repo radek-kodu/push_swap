@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/23 12:28:20 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/03 21:03:49 by camille          ###   ########.fr       */
-=======
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:28:20 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/04 12:44:43 by rpokorny         ###   ########.fr       */
->>>>>>> 0f834d7bc39f0c65bf06b9824dcb2bc8b27e2f76
+/*   Updated: 2026/11/07 12:59:50 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +14,14 @@
 
 static void	swap_toptwo(t_node **c)
 {
-	t_node *temp_ptr;
-	
-	/* if 0 or 1 nodes, return*/
+	t_node	*temp_ptr;
+
 	if (*c == NULL || (*c)->next == NULL)
 		return ;
-	/*have a temp ptr point to 2nd node*/
 	temp_ptr = (*c)->next;
-	/* have 1st node point to 3rd node*/
 	(*c)->next = (*c)->next->next;
-	/* make 2nd node point to 1st node*/
 	temp_ptr->next = *c;
-	/* make **c point to new 1st node*/
-	*c = temp_ptr; 
+	*c = temp_ptr;
 }
 
 // static void	swap_toptwo(t_node **c)
@@ -56,22 +44,24 @@ static void	swap_toptwo(t_node **c)
 //     (*c)->next->index = temp_index;
 // }
 
-void	sa(t_node **a)
+void	sa(t_data *data)
 {
-	swap_toptwo(a);
+	data->bench.sa++;
+	write (1, "sa\n", 3);
+	swap_toptwo(&data->a);
 }
 
-void	sb(t_node **b)
+void	sb(t_data *data)
 {
-	swap_toptwo(b);
+	data->bench.sb++;
+	write (1, "sb\n", 3);
+	swap_toptwo(&data->b);
 }
 
-void	ss(t_node **a, t_node **b)
+void	ss(t_data *data)
 {
-	swap_toptwo(a);
-	swap_toptwo(b);
-<<<<<<< HEAD
+	data->bench.ss++;
+	write (1, "ss\n", 3);
+	swap_toptwo(&data->a);
+	swap_toptwo(&data->b);
 }
-=======
-}
->>>>>>> 0f834d7bc39f0c65bf06b9824dcb2bc8b27e2f76

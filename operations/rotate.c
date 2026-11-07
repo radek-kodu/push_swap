@@ -3,48 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:28:11 by jrosette          #+#    #+#             */
-/*   Updated: 2026/09/23 12:28:13 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:58:42 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void    rotate(t_node **x)
+static void	rotate(t_node **x)
 {
 	t_node	*temp;
 	t_node	*last;
-	// handle if x is null
+
 	if (*x == NULL)
 		return ;
-	// handle if x-> next is null (just 1 node)
 	if ((*x)->next == NULL)
 		return ;
-	// save first node pointed by x to temp
 	temp = *x;
-	// move x pointer to 2nd node
 	*x = (*x)->next;
-	// detach first node of temp
 	temp->next = NULL;
-	// attach temp to end of x
 	last = lastnode(*x);
 	last->next = temp;
 }
 
-void	ra(t_node **a)
+void	ra(t_data *data)
 {
-	rotate(a);
+	data->bench.ra++;
+	write (1, "ra\n", 3);
+	rotate (&data->a);
 }
 
-void	rb(t_node **b)
+void	rb(t_data *data)
 {
-	rotate(b);
+	data->bench.rb++;
+	write (1, "rb\n", 3);
+	rotate (&data->b);
 }
 
-void	rr(t_node **a, t_node **b)
+void	rr(t_data *data)
 {
-	rotate(a);
-	rotate(b);
+	data->bench.rr++;
+	write (1, "rr\n", 3);
+	rotate (&data->a);
+	rotate (&data->b);
 }
