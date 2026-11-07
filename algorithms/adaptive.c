@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 12:48:17 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/04 12:35:22 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 15:05:40 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_flags	*adaptive(int *nbs, int argc, t_flags *flags)
 {
-	int	disorder;
+	double	disorder;
 
 	disorder = compute_disorder(nbs, argc);
 	if (disorder < 0.2)

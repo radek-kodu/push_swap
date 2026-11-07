@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/07 13:39:46 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/07 15:06:07 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ typedef struct s_overnode
 
 typedef struct	s_flags
 {
-	int	strategy;
-	int	bench;
-	int	start;
-	int	disorder;
+	int		strategy;
+	int		bench;
+	int		start;
+	double	disorder;
 }	t_flags;
 
 typedef struct s_data
@@ -63,7 +63,7 @@ typedef struct s_bench
 	int	rrr;
 }	t_bench;
 
-int compute_disorder(int *nbs, size_t size);
+double	compute_disorder(int *nbs, size_t size);
 /*Operations*/
 void	sa(t_data *data);
 void	sb(t_data *data);
@@ -93,6 +93,7 @@ void    free_array(char **array);
 int		ft_strlen(const char *s);
 
 /*Stack Utilities*/
+int		is_sorted(t_node *a);
 t_node  *lastnode(t_node *a);
 t_node	*find_min(t_node *a);
 int     get_node_position(t_node *a, t_node *node);
@@ -108,6 +109,6 @@ void	sort_two(t_data *data);
 void	sort_three(t_data *data);
 void    sort_small(t_data *data);
 void	sort_medium(t_data *data, int argc);
-void	complex(t_data *data, int argc);
+void	sort_complex(t_data *data, int argc);
 
 #endif
