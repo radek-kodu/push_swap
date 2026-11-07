@@ -3,16 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/04 19:35:05 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 13:18:55 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-
-
 
 #include "../push_swap.h"
 
@@ -38,22 +34,13 @@ Possible options:
 For error handling, start = -1 
 */
 
-static int	is_validflag(char *string);
-static t_flags	*assign_flag(char *string, t_flags *flags);
-static int	is_flag_available(char *string, t_flags *flags);
+// static int	is_validflag(char *string);
+// static t_flags	*assign_flag(char *string, t_flags *flags);
+// static int	is_flag_available(char *string, t_flags *flags);
 
-char	*convert_to_string(char **argv)
-{
-	char	*user_input;
-
-	//get length of argv (ft_strlen)
-	//check for unpaired quotation marks (single and double)?
-	//copy argv to user_input (not including quotation marks)
-	//return user_input
-}
 
 // Does not check argc
-t_flags	*parse_flags(char **argv, t_flags *flags)
+static t_flags	*parse_flags(char **argv, t_flags *flags)
 {
 	//t_flags	*flags;
 	int		i;

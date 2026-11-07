@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/06 20:43:42 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:07:12 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	*ft_substr(char const *s, unsigned int start, int len);
 char	**calloc_plus(int count, int size);
 int	    ft_strcmp(const char *s1, const char *s2);
 void    free_array(char **array);
+int		ft_strlen(const char *s);
 
 /*Stack Utilities*/
 t_node  *lastnode(t_node *a);
