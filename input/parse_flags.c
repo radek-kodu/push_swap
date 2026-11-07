@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/07 19:48:11 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:56:01 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ static int	is_flag_available(char *string, t_flags *flags)
 	return (1);
 }
 
+/*
 int main(void)
 {
 	t_flags	*flags;
@@ -172,35 +173,5 @@ int main(void)
 	printf("%d\n", (*flags).bench);
 	printf("%d\n", (*flags).start);
 	return (0);
-}
-
-/*
-static t_flags	*parse_flags(char **argv, t_flags *flags)
-{
-	//t_flags	*flags;
-	int		i;
-	
-	flags = malloc(sizeof(t_flags));
-	if (!flags)
-		return (NULL);
-	(*flags).strategy = 0;
-	(*flags).bench = 0;
-	(*flags).start = 0;
-	i = 1;
-	
-	while (argv[i] && !(is_valid_nbrs(argv[i])))
-	{
-		if (!is_validflag(argv[i]))
-		{
-			(*flags).start = -1;	
-			return (flags);
-		}
-		flags = assign_flag(argv[i], flags);
-		if ((*flags).start == -1)
-			return (flags);
-		i++;	
-	}
-	(*flags).start = i;
-	return (flags);
 }
 */
