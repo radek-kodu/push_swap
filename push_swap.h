@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/07 19:53:20 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/08 18:41:52 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,12 @@ void	rra(t_data *data);
 void	rrb(t_data *data);
 void	rrr(t_data *data);
 /*Input Utilities*/
-char	**parse_nbrs(char **argv, int start);
+char	**parse_nbrs(char *input, int start);
 t_flags	*parse_flags(char *args);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);
 int		is_sign(char c);
-int	    is_valid_nbrs(char *input);
-int	    count_numbers(char *string);
 int	    find_length(char *string, int *start);
 char	*ft_substr(char const *s, int start, int len);
 char	**calloc_plus(int count, int size);
