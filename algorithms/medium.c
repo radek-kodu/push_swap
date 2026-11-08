@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 14:17:18 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/07 13:03:15 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/08 18:50:05 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static void	push_chunk(t_data *data, int start, int top)
 	}
 }
 
-void	sort_medium(t_data *data, int argc)
+void	sort_medium(t_data *data)
 {
 	int	chunk_size;
 	int	start;
 	int	top;
 	int	size;
 
-	size = argc - 1;
+	size = data->size - 1;
 	start = 0;
 	chunk_size = chunk_sizer(size);
 	top = chunk_size;

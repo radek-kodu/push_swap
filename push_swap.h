@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/08 18:41:52 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/08 19:23:12 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-typedef struct s_overnode
-{
-	t_node	*top;
-	int		length;
-}	t_overnode;
-
 typedef struct s_flags
 {
 	int		strategy;
@@ -40,6 +34,14 @@ typedef struct s_flags
 	int		start;
 	double	disorder;
 }	t_flags;
+
+typedef struct s_data
+{
+	t_node	*a;
+	t_node	*b;
+	t_bench bench;
+	int		size;
+}	t_data;
 
 typedef struct s_bench
 {
@@ -56,14 +58,7 @@ typedef struct s_bench
 	int	rrr;
 }	t_bench;
 
-typedef struct s_data
-{
-	t_node *a;
-	t_node *b;
-	t_bench bench;
-}	t_data;
-
-int compute_disorder(int *nbs, size_t size);
+double	compute_disorder(int *nbs, int argc);
 /*Operations*/
 void	sa(t_data *data);
 void	sb(t_data *data);
@@ -103,12 +98,18 @@ t_node	*new_node(int value);
 int		is_duplicate(int nbr, t_node *stack);
 void	stack_add_back(t_node **stack, t_node *new);
 t_node	*free_stack(t_node *stack);
+t_node	*ft_lstnew(int content);
+t_node	*ft_lstlast(t_node *lst);
+void	ft_lstadd_back(t_node **lst, t_node *new);
+void	stack_clear(t_node **a);
+void	print_bench(t_data *data, t_flags flags);
 
 /*Sort Algorithms*/
 void	sort_two(t_data *data);
 void	sort_three(t_data *data);
 void	sort_small(t_data *data);
-void	sort_medium(t_data *data, int argc);
-void	sort_complex(t_data *data, int argc);
+void	sort_medium(t_data *data);
+void	sort_complex(t_data *data);
+void	sort_adaptive(t_flags *flags);
 
 #endif
