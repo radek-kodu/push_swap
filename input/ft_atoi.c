@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 20:13:02 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/10/01 12:02:09 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/08 19:28:17 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int			i;
 	long		sign;
@@ -32,7 +32,7 @@ int ft_atoi(char *str)
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
 		if ((result == 922337203685477580
-			&& str[i] > '7')
+				&& str[i] > '7')
 			|| (result > 922337203685477580))
 			return (-1 * (sign != -1));
 		result = (result * 10) + (str[i++] - '0');
