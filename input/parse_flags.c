@@ -6,14 +6,16 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/07 19:56:01 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/08 16:33:21 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 /*
+Receives a string. 
 Parses & checks the flags and saves them to a struct.
+Returns this struct.
 
 Values of struct:
 	strategy - 1 to 4
@@ -23,7 +25,7 @@ Values of struct:
 		3 - medium
 		4 - complex
 	bench - 0 or 1, if "--bench" is included or not
-	start - 0 to 3, starting index of the numbers
+	start - starting index of the numbers
 	
 Possible options: 
 ./push_swap --simple --bench 4 3 2 1
@@ -34,10 +36,10 @@ Possible options:
 For error handling, start = -1 
 */
 
-static int	is_validflag(char *string);
+static int		is_validflag(char *string);
 static t_flags	*assign_flag(char *string, t_flags *flags);
-static int	is_flag_available(char *string, t_flags *flags);
-static char	*get_flag(char *args, int *i);
+static int		is_flag_available(char *string, t_flags *flags);
+static char		*get_flag(char *args, int *i);
 
 t_flags	*parse_flags(char *args)
 {
@@ -48,36 +50,24 @@ t_flags	*parse_flags(char *args)
 	flags = malloc(sizeof(t_flags));
 	if (!flags)
 		return (NULL);
-	(*flags).strategy = 0;
-	(*flags).bench = 0;
-	(*flags).start = 0;
-	
 	i = 0;
 	while (args[i])
-	{		
-		while (args[i] == ' ')		
-			i++;	
+	{
+		while (args[i] == ' ')
+			i++;
 		flag = get_flag(args, &i);
-		// printf("flag: %s\n", flag);
 		if (flag)
-		{
 			flags = assign_flag(flag, flags);
-		}
-		else if ((*flags).start == -1)
-		{		
-			free(flag);			
-			return (flags);
-		}
 		else
-			break;
+			break ;
 		i++;
 	}
-	(*flags).start = i;
+	if ((*flags).start != -1)
+		(*flags).start = i;
 	free(flag);
 	return (flags);
 }
 
-// returns a flag from input
 static char	*get_flag(char *args, int *i)
 {
 	char	*flag;
@@ -85,7 +75,6 @@ static char	*get_flag(char *args, int *i)
 	int		len;
 	int		temp;
 
-	// printf("index in value: %d\n", *i);
 	temp = *i;
 	len = 0;
 	while (args[temp++] && args[temp++] != ' ')
@@ -98,12 +87,9 @@ static char	*get_flag(char *args, int *i)
 	{
 		if (args[*i] == ' ' || is_digit(args[*i]))
 			break ;
-		flag[j] = args[*i];
-		(*i)++;
-		j++;
+		flag[j++] = args[(*i)++];
 	}
 	flag[j] = '\0';
-	// printf("index out value: %d\n", *i);
 	if (is_validflag(flag))
 		return (flag);
 	else
@@ -112,7 +98,6 @@ static char	*get_flag(char *args, int *i)
 
 static int	is_validflag(char *string)
 {
-	
 	if (ft_strcmp(string, "--bench") == 0
 		|| ft_strcmp(string, "--simple") == 0
 		|| ft_strcmp(string, "--medium") == 0
@@ -123,17 +108,13 @@ static int	is_validflag(char *string)
 		return (0);
 }
 
-// assigns the flag to struct values and checks for duplications 
-// For duplications, flags.start = -1
-// edge case: ./push_swap --adaptive --complex 4 3 2 1
-// edge case: ./push_swap --bench --bench 4 3 2 1
 static t_flags	*assign_flag(char *string, t_flags *flags)
 {
 	if (!(is_flag_available(string, flags)))
 	{
 		(*flags).start = -1;
 		return (flags);
-	}	
+	}
 	else
 	{
 		if (ft_strcmp(string, "--bench") == 0)
@@ -145,7 +126,7 @@ static t_flags	*assign_flag(char *string, t_flags *flags)
 		else if (ft_strcmp(string, "--medium") == 0)
 			(*flags).strategy = 3;
 		else if (ft_strcmp(string, "--complex") == 0)
-			(*flags).strategy = 4;				
+			(*flags).strategy = 4;
 	}
 	return (flags);
 }
@@ -155,9 +136,9 @@ static int	is_flag_available(char *string, t_flags *flags)
 	if ((*flags).bench != 0 && ft_strcmp(string, "--bench") == 0)
 		return (0);
 	else if ((*flags).strategy != 0 && (ft_strcmp(string, "--simple") == 0
-		|| ft_strcmp(string, "--medium") == 0
-		|| ft_strcmp(string, "--complex") == 0
-		|| ft_strcmp(string, "--adaptive") == 0))
+			|| ft_strcmp(string, "--medium") == 0
+			|| ft_strcmp(string, "--complex") == 0
+			|| ft_strcmp(string, "--adaptive") == 0))
 		return (0);
 	return (1);
 }
@@ -166,7 +147,7 @@ static int	is_flag_available(char *string, t_flags *flags)
 int main(void)
 {
 	t_flags	*flags;
-	char str[] = "--simple 10 5 2 6";
+	char str[] = "--simple --complex 10 5 2 6";
 	
 	flags = parse_flags(str);
 	printf("%d\n", (*flags).strategy);
