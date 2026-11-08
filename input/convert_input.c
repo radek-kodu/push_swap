@@ -6,11 +6,15 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 13:14:45 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/07 13:33:46 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/08 16:41:06 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+/*
+Converts user input into a string.
+*/
 
 static int	get_line_length(int argc, char **argv);
 
