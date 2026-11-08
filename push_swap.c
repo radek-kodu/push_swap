@@ -6,39 +6,75 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/07 15:41:18 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/08 19:00:55 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int  *sorting(int *nbs, int disorder)
+int  nbs_conversion(int *nbs, t_data *data)
 {
+	t_node	*new;
+	int		i;
+
+	i = 0; 
+	while (i < data->size)
+	{
+		new = ft_lstnew(nbs[i]);
+		if (new == NULL)
+			{
+				stack_clear(&data->a);
+				return (0);
+			}
+		ft_lstadd_back(&data->a, new);
+		i++;
+	}
+	return (1);
+}
+
+void	sorting(t_data *data, t_flags flags)
+{
+	if (flags.strategy == 0 || flags.strategy == 1)
+		sort_adaptive(&flags);
+	if (data->size <= 5)
+		sort_small(data);
+	else if (flags.strategy == 2)
+		sort_simple(data);
+	else if (flags.strategy == 3)
+		sort_medium(data);
+	else
+		sort_complex(data);
+	if (flags.bench == 1)
+		print_bench(data, flags);
 }
 
 void    push_swap(int argc, char **argv)
 {
-    int     *nbs;
-    t_flags *flags;
-    t_data	data;
+	t_flags	flags;
+	t_data	data;
+	int		*nbs;
 
-    data = (t_data){0};
-    nbs = malloc(argc * sizeof(int));
-    if (nbs == NULL)
-        return (write(2, "Error\n", 6), free(nbs), 1);
-    nbs = atoi_plus(argc, &argv);
-    if (nbs == NULL)
-        return (write(2, "Error\n", 6), free(nbs), 1);
-    flags = parse_flags(argv, flags);
-    nbs = sorting(nbs, flags->disorder);
+	data = (t_data){0};
+	flags = (t_flags){0};
+	// input and flags
+	nbs = ;
+	flags = ;
+	// sorting
+	while (nbs[data.size])
+		data.size++;
+	flags.disorder = compute_disorder(nbs, argc);
+	if (!nbs_conversion(nbs, &data))
+		{
+			free(nbs);
+			return (write(2, "Error\n", 6), 1);
+		}
+	sorting(&data, flags);
 }
 
 int main(int argc, char **argv)
 {
-    if (argc < 2)
-        return (write(2, "Error\n", 6), 1);
-
-    push_swap(argc - 1, &argv[1]);
-
-    return (0);
+	if (argc < 2)
+		return (write(2, "Error\n", 6), 1);
+	push_swap(argc - 1, &argv[1]);
+	return (0);
 }
