@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 17:18:15 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:55:59 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_data
 {
 	t_node	*a;
 	t_node	*b;
-	t_bench bench;
+	t_bench	bench;
 	int		size;
 }	t_data;
 
@@ -73,13 +73,14 @@ void	rrb(t_data *data);
 void	rrr(t_data *data);
 /*Input Utilities*/
 char	*convert_input(int argc, char **argv);
-int		parse_nbrs(char *input, int start, int **numbers_array, int *total_elements);
-int 	parse_flags(char *args, t_flags *flags);
-int	    is_empty_string(char *input);
-int     is_digit(char c);
-int	    is_whitespace(char c);
+int		parse_nbrs(char *input, int start,
+			int **numbers_array, int *total_elements);
+int		parse_flags(char *args, t_flags *flags);
+int		is_empty_string(char *input);
+int		is_digit(char c);
+int		is_whitespace(char c);
 int		is_sign(char c);
-int	    find_length(char *string, int *start);
+int		find_length(char *string, int *start);
 char	*ft_substr(char const *s, int start, int len);
 char	**calloc_plus(int count, int size);
 int		ft_strcmp(const char *s1, const char *s2);
@@ -87,7 +88,7 @@ void	free_array(char **array);
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 void	*ft_memcpy(void *dst, const void *src, int n);
-int	    ft_atoi(char *str, long *result);
+int		ft_atoi(char *str, long *result);
 
 /*Stack Utilities*/
 int		is_sorted(t_node *a);

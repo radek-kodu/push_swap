@@ -6,13 +6,13 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 17:40:28 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:53:46 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int  nbs_conversion(int *nbs, t_data *data)
+int	nbs_conversion(int *nbs, t_data *data)
 {
 	t_node	*new;
 	int		i;
@@ -22,10 +22,10 @@ int  nbs_conversion(int *nbs, t_data *data)
 	{
 		new = ft_lstnew(nbs[i]);
 		if (new == NULL)
-			{
-				stack_clear(&data->a);
-				return (0);
-			}
+		{
+			stack_clear(&data->a);
+			return (0);
+		}
 		ft_lstadd_back(&data->a, new);
 		i++;
 	}
@@ -54,7 +54,7 @@ void	sorting(t_data *data, t_flags flags)
 		print_bench(data, flags);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_flags	flags;
 	t_data	data;
@@ -63,9 +63,8 @@ int main(int argc, char **argv)
 
 	data = (t_data){0};
 	flags = (t_flags){0};
-	// input and flags
 	input = convert_input(argc, argv);
-	if(!parse_flags(input, &flags))
+	if (!parse_flags(input, &flags))
 		return (write(2, "Error\n", 6), 1);
 	parse_nbrs(input, flags.start, &nbs, &data.size);
 	free(input);
@@ -73,12 +72,11 @@ int main(int argc, char **argv)
 		return (write(2, "Error\n", 6), 1);
 	flags.disorder = compute_disorder(nbs, data.size);
 	if (!nbs_conversion(nbs, &data))
-		{
-			free(nbs);
-			return (write(2, "Error\n", 6), 1);
-		}
+	{
+		free(nbs);
+		return (write(2, "Error\n", 6), 1);
+	}
 	free(nbs);
-	//sorting
 	sorting(&data, flags);
 	stack_clear(&data.a);
 	stack_clear(&data.b);
