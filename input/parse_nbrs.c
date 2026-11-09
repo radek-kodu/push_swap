@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_nbrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/08 19:18:12 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 10:53:49 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,30 @@ NOTE: Insert flags.start as parameter (int start).
 
 static int	is_valid_nbrs(char *input);
 static int	count_numbers(char *string);
-static void add_to_array(char **array, char **string);
-// static long int	get_total(char **argv, int i);
-static int	find_freeslot(char **array);
+static int add_to_array(char **array, char **string, int i);
 
-char	**parse_nbrs(char *input, int start)
+char	**parse_nbrs(char *input, int start, int *total_elements)
 {
-	char	*array;
-	int		total_elements;
+	char	**array;
+    int     i;
 
 	input += start;
-	if (!input)
-		return (NULL);
-	array = NULL;
 	if (!is_valid_nbrs(input))
 		return (NULL);
-	total_elements = count_numbers(input);
-	array = calloc_plus((total_elements + 1), sizeof(char *));
+	*total_elements = count_numbers(input);
+	array = calloc_plus((*total_elements + 1), sizeof(char *));
 	if (!array)
 		return (NULL);
-	/* BUGGY AREA BELOW: TO FIX */
-	while (input)
+    i = 0;
+    while (*input)
 	{
 		while (is_whitespace(*input))
 			input++;
-		add_to_array(&array, &input);
-		if (!array)
+        if (!*input)
+            break ;
+		if (!add_to_array(array, &input, i))
 			return (NULL);
+        i++;
 	}
 	return (array);
 }
@@ -106,70 +103,37 @@ static int	count_numbers(char *string)
 	return (count);
 }
 
-static void add_to_array(char **array, char **string)
+static int add_to_array(char **array, char **string, int i)
 {
-	int start;
-	int i;
 	int length;
 
-	start = 0;
-	i = find_freeslot(array);
-	while (string[start])
-	{
-		length = find_length(*string, &start);
-		array[i] = ft_substr(*string, start, length);
-		if (!(array[i]))
-		{
-			free_array(array);    
-			return (NULL);
-		}
-		start += length;
-		i++;
-	}
-	string += length;
-	array[i] = NULL;
-	return (array);
-}
-
-static int	find_freeslot(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-		i++;
-	return (i);
+	length = 0;
+	while ((*string)[length] && !is_whitespace((*string)[length]))
+        length++;
+	array[i] = ft_substr(*string, 0, length);
+    if (!(array[i]))
+    {
+        free_array(array);    
+        return (0);
+    }
+	*string += length;
+	return (1);
 }
 
 int	main(void)
 {
 	char	**array;
 	int 	i = 0;
+    int     total_elements;
 
-	char	input[] =  "--simple --bench 10 5 7 12 57 42359";
+	char	input[] =  "--simple --bench 10    5 7 -12 57 +42359";
 	int		start = 17;
-	array = parse_nbrs(input, start);
-	while (array[i])
+	array = parse_nbrs(input, start, &total_elements);
+	while (i < total_elements)
 	{
-		printf("%s\n", array[i]);
+		printf("index %d: %s\n", i, array[i]);
 		i++;		
 	}
+    free_array(array);
 	return (0);
 }
-
-// static long int	get_total(char **argv, int i)
-// {
-// 	long int	total;
-	
-// 	total = 0;
-// 	while (argv[i])
-// 	{
-// 		if (!is_valid_nbrs(argv[i]))
-// 			return (-1);
-// 		total += count_numbers(argv[i]);
-// 		if (total > INT_MAX)
-// 			return (-1);
-// 		i++;
-// 	}
-// 	return (total);
-// }

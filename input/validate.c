@@ -1,36 +1,51 @@
 /*
+Accepts an array of numbers in char type. 
 Handles checking whether the numbers are acceptable.
 
 * Calls atoi (long int)
 * Check INT_MIN / INT_MAX boundaries
 * Cast to int
 * Detect duplicates
-* Returns a stack of ints
+* Returns an array of ints
 
 */
 #include "../push_swap.h"
 
-t_node	*validate(char **array)
-{
-	int			i;
-	long    	temp_value;
-	t_node		*stack;
-	t_node		*new;
+static int  is_duplicate_nbrs(int number, int *numbers, int size);
 
-	temp_value = 0;
-	i = 0;
-	stack = NULL;
-	while (array[i])
-	{
-		temp_value = ft_atoi(array[i]);
-		if (temp_value < INT_MIN || temp_value > INT_MAX || is_duplicate((int)temp_value, stack))
-			return (free_stack(stack));          
-		new = new_node(temp_value);
-		if (new == NULL)
-			return (free_stack(stack));            
-		stack_add_back(&stack, new);
-		i++;
-	}
+int	*validate(char **array, int total_elements)
+{
+	int		i;
+	long    temp_value;
+    int     *numbers;    
+
+    numbers = malloc(total_elements * sizeof(int));
+    if (!numbers)
+        return (free_array(array), NULL);
+    i = 0;
+    while (i < total_elements)
+    {
+        if (!ft_atoi(array[i], &temp_value))
+            return (free(numbers), free_array(array), NULL);
+        if (temp_value < INT_MIN || temp_value > INT_MAX || is_duplicate_nbrs((int)temp_value, numbers, i))
+            return (free(numbers), free_array(array), NULL);
+        numbers[i] = (int)temp_value;
+        i++;
+    }
 	free_array(array);
-	return (stack);
+	return (numbers);
+}
+
+static int  is_duplicate_nbrs(int number, int *numbers, int size)
+{
+    int i;
+
+    i = 0;
+    while (i < size)
+    {
+        if (numbers[i] == number)
+            return (1);
+        i++;
+    }
+    return (0);
 }

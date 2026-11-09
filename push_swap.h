@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/08 19:23:12 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 11:11:36 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdint.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -26,6 +27,21 @@ typedef struct s_node
 	int				index;
 	struct s_node	*next;
 }					t_node;
+
+typedef struct s_bench
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_bench;
 
 typedef struct s_flags
 {
@@ -43,21 +59,6 @@ typedef struct s_data
 	int		size;
 }	t_data;
 
-typedef struct s_bench
-{
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-}	t_bench;
-
 double	compute_disorder(int *nbs, int argc);
 /*Operations*/
 void	sa(t_data *data);
@@ -72,7 +73,7 @@ void	rra(t_data *data);
 void	rrb(t_data *data);
 void	rrr(t_data *data);
 /*Input Utilities*/
-char	**parse_nbrs(char *input, int start);
+char	**parse_nbrs(char *input, int start, int *total_elements);
 t_flags	*parse_flags(char *args);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
@@ -86,6 +87,7 @@ void	free_array(char **array);
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 void	*ft_memcpy(void *dst, const void *src, int n);
+int	    ft_atoi(char *str, long *result);
 
 /*Stack Utilities*/
 int		is_sorted(t_node *a);
