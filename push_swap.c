@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 16:17:25 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:40:28 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 	input = convert_input(argc, argv);
 	if(!parse_flags(input, &flags))
 		return (write(2, "Error\n", 6), 1);
-	nbs = parse_nbrs(input, flags.start, &data.size);
+	parse_nbrs(input, flags.start, &nbs, &data.size);
 	free(input);
 	if (!nbs)
 		return (write(2, "Error\n", 6), 1);

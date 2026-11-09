@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 17:06:08 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:18:15 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	rrb(t_data *data);
 void	rrr(t_data *data);
 /*Input Utilities*/
 char	*convert_input(int argc, char **argv);
-char	**parse_nbrs(char *input, int start, int *total_elements);
+int		parse_nbrs(char *input, int start, int **numbers_array, int *total_elements);
 int 	parse_flags(char *args, t_flags *flags);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
@@ -94,8 +94,8 @@ int		is_sorted(t_node *a);
 t_node	*lastnode(t_node *a);
 t_node	*find_min(t_node *a);
 int		get_node_position(t_node *a, t_node *node);
-int		get_stack_size(t_node *a);
-void	bring_node_top(t_node **a, int node_pos);
+int		get_stack_size(t_data *data);
+void	bring_node_top(t_data *data, int node_pos);
 t_node	*new_node(int value);
 int		is_duplicate(int nbr, t_node *stack);
 void	stack_add_back(t_node **stack, t_node *new);
