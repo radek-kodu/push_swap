@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:48:52 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 17:50:47 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:36:27 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	bring_node_top(t_data *data, int node_pos)
 	int	middle_pos;
 	int	stack_size;
 
-	stack_size = get_stack_size(data);
+	stack_size = get_stack_size(data->a);
 	middle_pos = stack_size / 2;
 	if (node_pos <= middle_pos)
 	{
