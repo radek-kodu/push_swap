@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 18:05:14 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:18:20 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int		is_sorted(t_node *a);
 t_node	*lastnode(t_node *a);
 t_node	*find_min(t_node *a);
 int		get_node_position(t_node *a, t_node *node);
-int		get_stack_size(t_data *data);
+int		get_stack_size(t_node *a);
 void	bring_node_top(t_data *data, int node_pos);
 t_node	*new_node(int value);
 int		is_duplicate(int nbr, t_node *stack);

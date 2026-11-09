@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:44:54 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 17:49:59 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:16:00 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ int	get_node_position(t_node *a, t_node *node)
 	return (-1);
 }
 
-int	get_stack_size(t_data *data)
+int	get_stack_size(t_node *a)
 {
 	int	stack_size;
 
 	stack_size = 0;
-	if (!data->a)
+	if (!a)
 		return (stack_size);
-	while (data->a)
+	while (a)
 	{
 		stack_size++;
-		data->a = data->a->next;
+		a = a->next;
 	}
 	return (stack_size);
 }
