@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 17:01:21 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:20:44 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	is_empty_string(char *input)
 	return (1);
 }
 
-int is_digit(char c)
+int	is_digit(char c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
 int	is_whitespace(char c)

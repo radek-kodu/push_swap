@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/09 17:21:22 by jrosette          #+#    #+#             */
+/*   Updated: 2026/11/09 17:41:54 by jrosette         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 Accepts an array of numbers in char type. 
 Handles checking whether the numbers are acceptable.
@@ -11,41 +23,42 @@ Handles checking whether the numbers are acceptable.
 */
 #include "../push_swap.h"
 
-static int  is_duplicate_nbrs(int number, int *numbers, int size);
+static int	is_duplicate_nbrs(int number, int *numbers, int size);
 
 int	*validate(char **array, int total_elements)
 {
 	int		i;
-	long    temp_value;
-    int     *numbers;    
+	long	temp_value;
+	int		*numbers;
 
-    numbers = malloc(total_elements * sizeof(int));
-    if (!numbers)
-        return (free_array(array), NULL);
-    i = 0;
-    while (i < total_elements)
-    {
-        if (!ft_atoi(array[i], &temp_value))
-            return (free(numbers), free_array(array), NULL);
-        if (temp_value < INT_MIN || temp_value > INT_MAX || is_duplicate_nbrs((int)temp_value, numbers, i))
-            return (free(numbers), free_array(array), NULL);
-        numbers[i] = (int)temp_value;
-        i++;
-    }
+	numbers = malloc(total_elements * sizeof(int));
+	if (!numbers)
+		return (free_array(array), NULL);
+	i = 0;
+	while (i < total_elements)
+	{
+		if (!ft_atoi(array[i], &temp_value))
+			return (free(numbers), free_array(array), NULL);
+		if (temp_value < INT_MIN || temp_value > INT_MAX
+			|| is_duplicate_nbrs((int)temp_value, numbers, i))
+			return (free(numbers), free_array(array), NULL);
+		numbers[i] = (int)temp_value;
+		i++;
+	}
 	free_array(array);
 	return (numbers);
 }
 
-static int  is_duplicate_nbrs(int number, int *numbers, int size)
+static int	is_duplicate_nbrs(int number, int *numbers, int size)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < size)
-    {
-        if (numbers[i] == number)
-            return (1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (i < size)
+	{
+		if (numbers[i] == number)
+			return (1);
+		i++;
+	}
+	return (0);
 }

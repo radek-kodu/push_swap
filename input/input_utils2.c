@@ -6,11 +6,20 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:53:37 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 16:56:09 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:42:40 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+/*
+// if (sign == 1 && (*result > LONG_MAX / 10 || (*result == LONG_MAX / 10
+// 			&& digit > LONG_MAX % 10))) 
+// 	return (0);
+// if (sign == -1 && (*result > LONG_MAX / 10 || (*result == LONG_MAX / 10
+// 			&& digit > 8)))
+// 	return (0);
+*/
 
 int	ft_atoi(char *str, long *result)
 {
@@ -21,8 +30,6 @@ int	ft_atoi(char *str, long *result)
 	i = 0;
 	*result = 0;
 	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
@@ -32,14 +39,6 @@ int	ft_atoi(char *str, long *result)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		digit = str[i] - '0';
-		if (sign == 1 && (*result > LONG_MAX / 10
-				|| (*result == LONG_MAX / 10
-					&& digit > LONG_MAX % 10)))
-			return (0);
-		if (sign == -1 && (*result > LONG_MAX / 10
-				|| (*result == LONG_MAX / 10
-					&& digit > 8)))
-			return (0);
 		*result = (*result * 10) + digit;
 		i++;
 	}

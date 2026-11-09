@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 16:52:26 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:20:10 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_flags	*assign_flag(char *string, t_flags *flags);
 static int		is_flag_available(char *string, t_flags *flags);
 static char		*get_flag(char *args, int *i);
 
-int parse_flags(char *args, t_flags *flags)
+int	parse_flags(char *args, t_flags *flags)
 {
 	int		i;
 	char	*flag;

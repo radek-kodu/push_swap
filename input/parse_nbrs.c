@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 17:12:10 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:21:07 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	parse_nbrs(char *input, int start, int **numbers_array, int *total_elements)
 		if (!*input)
 			break ;
 		if (!add_to_array(chars_array, &input, i))
-    		return (free_array(chars_array), 1);
+			return (free_array(chars_array), 1);
 		i++;
 	}
 	*numbers_array = validate(chars_array, *total_elements);

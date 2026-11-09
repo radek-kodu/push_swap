@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:02:03 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 17:02:11 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:30:49 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_substr(char const *s, int start, int len)
 {
 	int		j;
 	char	*substr;
-	int 	slen;
+	int		slen;
 
 	j = 0;
 	if (!s)
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, int start, int len)
 		return (ft_strdup(""));
 	if (start + len > slen)
 		substr = malloc((slen - start) + 1);
-	else		
+	else
 		substr = malloc(len + 1);
 	if (!substr)
 		return (NULL);
@@ -59,15 +59,15 @@ char	**calloc_plus(int count, int size)
 	return (array);
 }
 
-void    free_array(char **array)
+void	free_array(char **array)
 {
-    int i;
-    
-    i = 0;
-    while (array[i])
-    {
-        free(array[i]);
-        i++;
-    }
-    free(array);
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
