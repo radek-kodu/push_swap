@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 18:19:15 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 18:35:46 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 22:28:12 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ double	compute_disorder(int *nbs, int size)
 	i = 0;
 	mistakes = 0;
 	total_pairs = 0;
-	while (i < size - 1)
+	while (i + 1 < size)
 	{
 		j = i + 1;
-		while (j < size - 1)
+		while (j < size)
 		{
 			total_pairs++;
 			if (nbs[i] > nbs[j])
 				mistakes++;
+			j++;
 		}
+		i++;
 	}
-	return (mistakes / total_pairs);
+	return ((double)mistakes / total_pairs);
 }
