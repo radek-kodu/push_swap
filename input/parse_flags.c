@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/08 16:33:21 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 14:28:41 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,14 @@ static t_flags	*assign_flag(char *string, t_flags *flags);
 static int		is_flag_available(char *string, t_flags *flags);
 static char		*get_flag(char *args, int *i);
 
-t_flags	*parse_flags(char *args)
+int parse_flags(char *args, t_flags **flags)
 {
-	t_flags	*flags;
 	int		i;
 	char	*flag;
 
-	flags = malloc(sizeof(t_flags));
-	if (!flags)
-		return (NULL);
+	*flags = malloc(sizeof(t_flags));
+	if (!(*flags))
+		return (1);
 	i = 0;
 	while (args[i])
 	{
@@ -57,16 +56,43 @@ t_flags	*parse_flags(char *args)
 			i++;
 		flag = get_flag(args, &i);
 		if (flag)
-			flags = assign_flag(flag, flags);
+			*flags = assign_flag(flag, *flags);
 		else
 			break ;
 		i++;
 	}
-	if ((*flags).start != -1)
-		(*flags).start = i;
+	if ((**flags).start != -1)
+		(**flags).start = i;
 	free(flag);
-	return (flags);
+	return (0);
 }
+
+// t_flags	*parse_flags(char *args)
+// {
+// 	t_flags	*flags;
+// 	int		i;
+// 	char	*flag;
+
+// 	flags = malloc(sizeof(t_flags));
+// 	if (!flags)
+// 		return (NULL);
+// 	i = 0;
+// 	while (args[i])
+// 	{
+// 		while (args[i] == ' ')
+// 			i++;
+// 		flag = get_flag(args, &i);
+// 		if (flag)
+// 			flags = assign_flag(flag, flags);
+// 		else
+// 			break ;
+// 		i++;
+// 	}
+// 	if ((*flags).start != -1)
+// 		(*flags).start = i;
+// 	free(flag);
+// 	return (flags);
+// }
 
 static char	*get_flag(char *args, int *i)
 {
@@ -146,10 +172,10 @@ static int	is_flag_available(char *string, t_flags *flags)
 /*
 int main(void)
 {
-	t_flags	*flags;
-	char str[] = "--simple --complex 10 5 2 6";
+	t_flags	*flags = NULL;
+	char str[] = "--simple --bench 10 5 2 6";
 	
-	flags = parse_flags(str);
+	parse_flags(str, &flags);
 	printf("%d\n", (*flags).strategy);
 	printf("%d\n", (*flags).bench);
 	printf("%d\n", (*flags).start);
