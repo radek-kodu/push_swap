@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/08 19:00:55 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 15:14:43 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int  nbs_conversion(int *nbs, t_data *data)
 	t_node	*new;
 	int		i;
 
-	i = 0; 
+	i = 0;
 	while (i < data->size)
 	{
 		new = ft_lstnew(nbs[i]);
@@ -34,6 +34,12 @@ int  nbs_conversion(int *nbs, t_data *data)
 
 void	sorting(t_data *data, t_flags flags)
 {
+	if (flags.disorder == 0)
+	{
+		if (flags.bench == 1)
+			print_bench(data, flags);
+		return ;
+	}
 	if (flags.strategy == 0 || flags.strategy == 1)
 		sort_adaptive(&flags);
 	if (data->size <= 5)
@@ -50,31 +56,35 @@ void	sorting(t_data *data, t_flags flags)
 
 void    push_swap(int argc, char **argv)
 {
+	
+}
+
+int main(int argc, char **argv)
+{
 	t_flags	flags;
 	t_data	data;
 	int		*nbs;
+	char	*input;
 
 	data = (t_data){0};
 	flags = (t_flags){0};
 	// input and flags
-	nbs = ;
-	flags = ;
-	// sorting
-	while (nbs[data.size])
-		data.size++;
-	flags.disorder = compute_disorder(nbs, argc);
+	input = convert_input(argc, argv);
+	if(!parse_flags(input, &flags))
+		return (write(2, "Error\n", 6), 1);
+	nbs = parse_nbrs(input, flags.start, &data.size);
+	free(input);
+	if (!nbs)
+		return (write(2, "Error\n", 6), 1);
+	flags.disorder = compute_disorder(nbs, data.size);
 	if (!nbs_conversion(nbs, &data))
 		{
 			free(nbs);
 			return (write(2, "Error\n", 6), 1);
 		}
+	free(nbs);
+	//sorting
 	sorting(&data, flags);
-}
-
-int main(int argc, char **argv)
-{
-	if (argc < 2)
-		return (write(2, "Error\n", 6), 1);
-	push_swap(argc - 1, &argv[1]);
-	return (0);
+	stack_clear(&data.a);
+	stack_clear(&data.b);
 }
