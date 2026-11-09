@@ -8,16 +8,13 @@ SRCS = push_swap.c \
 	disorder.c \
 	bench.c \
 	stack_utils.c \
+	stack_utils2.c \
 	input/convert_input.c \
-	input/ft_aoti.c \
-	input/ft_memcpy.c \
-	input/ft_strcmp.c \
-	input/ft_strdup.c \
-	input/ft_strlen.c \
 	input/input_utils.c \
+	input/input_utils2.c \
+	input/input_utils3.c \
 	input/parse_flags.c \
 	input/parse_nbrs.c \
-	input/validate.c \
 	operations/push.c \
 	operations/reverse_rotate.c \
 	operations/rotate.c \

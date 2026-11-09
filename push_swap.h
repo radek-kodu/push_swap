@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 17:55:59 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:05:14 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 void	*ft_memcpy(void *dst, const void *src, int n);
 int		ft_atoi(char *str, long *result);
+int		*validate(char **array, int total_elements);
 
 /*Stack Utilities*/
 int		is_sorted(t_node *a);

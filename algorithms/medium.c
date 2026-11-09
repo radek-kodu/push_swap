@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 14:17:18 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/08 18:50:05 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:05:41 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static int	chunk_sizer(int argc)
 {

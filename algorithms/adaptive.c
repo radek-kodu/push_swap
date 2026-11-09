@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 12:48:17 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/08 17:32:05 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:04:09 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	sort_adaptive(t_flags *flags)
 {

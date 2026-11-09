@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 14:26:00 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/04 15:57:15 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:05:25 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	indexing(t_node *a)
 {
