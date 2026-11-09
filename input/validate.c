@@ -6,7 +6,7 @@ Handles checking whether the numbers are acceptable.
 * Check INT_MIN / INT_MAX boundaries
 * Cast to int
 * Detect duplicates
-* Returns an array of ints
+* Returns an int BUT also modifies the array of ints
 
 */
 #include "../push_swap.h"
