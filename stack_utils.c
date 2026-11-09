@@ -76,34 +76,35 @@ int get_node_position(t_node *a, t_node *node)
 	return (-1);
 }
 
-int	get_stack_size(t_node *a)
+int	get_stack_size(t_data *data)
 {
 	int	stack_size;
 
 	stack_size = 0;
-	if (!a)
+	if (!data->a)
 		return (stack_size);
-	while (a)
+	while (data->a)
 	{
 		stack_size++;
-		a = a->next;
+		data->a = data->a->next;
 	}
 	return (stack_size);
 }
 
-void	bring_node_top(t_node **a, int node_pos)
+// t_data *data
+void	bring_node_top(t_data *data, int node_pos)
 {
 	int	middle_pos;
 	int	stack_size;
 
-	stack_size = get_stack_size(*a);
+	stack_size = get_stack_size(data);
 	middle_pos = stack_size / 2;
 	// if node_pos < middle_pos (push up until node_pos == 0)
 	if (node_pos <= middle_pos)
 	{
 		while (node_pos > 0)
 		{
-			ra(a);
+			ra(data);
 			node_pos--;
 		}
 	}
@@ -112,7 +113,7 @@ void	bring_node_top(t_node **a, int node_pos)
 	{
 		while (node_pos != stack_size)
 		{
-			rra(a);
+			rra(data);
 			node_pos++;
 		}
 	}

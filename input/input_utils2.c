@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   input_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/16 20:13:02 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 11:11:03 by camille          ###   ########.fr       */
+/*   Created: 2026/11/09 16:53:37 by jrosette          #+#    #+#             */
+/*   Updated: 2026/11/09 16:56:09 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,61 @@ int	ft_atoi(char *str, long *result)
 	}
 	*result *= sign;
 	return (1);
+}
+
+void	*ft_memcpy(void *dst, const void *src, int n)
+{
+	int					i;
+	const unsigned char	*source;
+	unsigned char		*destination;
+
+	i = 0;
+	source = src;
+	destination = dst;
+	while (i < n)
+	{
+		destination[i] = source[i];
+		i++;
+	}
+	return (dst);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if ((unsigned char)s1[i] == (unsigned char)s2[i])
+			i++;
+		else
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	return (0);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*ptr;
+	size_t	count;
+
+	count = ft_strlen(s1);
+	ptr = malloc(1 + count);
+	if (!ptr)
+		return (NULL);
+	ft_memcpy(ptr, s1, (count + 1));
+	return (ptr);
+}
+
+int	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

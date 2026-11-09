@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_nbrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 10:53:49 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/09 16:20:32 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,38 @@ NOTE: Insert flags.start as parameter (int start).
 
 static int	is_valid_nbrs(char *input);
 static int	count_numbers(char *string);
-static int add_to_array(char **array, char **string, int i);
+static int	add_to_array(char **array, char **string, int i);
 
-char	**parse_nbrs(char *input, int start, int *total_elements)
+int	parse_nbrs(char *input, int start, int **numbers_array, int *total_elements)
 {
-	char	**array;
-    int     i;
+	char	**chars_array;
+	int		i;
 
 	input += start;
 	if (!is_valid_nbrs(input))
-		return (NULL);
+		return (1);
 	*total_elements = count_numbers(input);
-	array = calloc_plus((*total_elements + 1), sizeof(char *));
-	if (!array)
+	chars_array = calloc_plus((*total_elements + 1), sizeof(char *));
+	if (!chars_array)
 		return (NULL);
-    i = 0;
-    while (*input)
+	i = 0;
+	while (*input)
 	{
 		while (is_whitespace(*input))
 			input++;
-        if (!*input)
-            break ;
-		if (!add_to_array(array, &input, i))
+		if (!*input)
+			break ;
+		if (!add_to_array(chars_array, &input, i))
+		{
+			free_array(chars_array);
 			return (NULL);
-        i++;
+		}
+		i++;
 	}
-	return (array);
+	*numbers_array = validate(chars_array, *total_elements);
+	if (!numbers_array)
+		return (1);
+	return (0);
 }
 
 static int	is_valid_nbrs(char *input)
@@ -92,34 +98,35 @@ static int	count_numbers(char *string)
 		while (is_whitespace(string[i]))
 			i++;
 		if (is_digit(string[i]) || is_sign(string[i]))
-        {
-            count++;
-            if (is_sign(string[i]))
-                i++;
-            while (is_digit(string[i]))
-                i++;            
-        }
+		{
+			count++;
+			if (is_sign(string[i]))
+				i++;
+			while (is_digit(string[i]))
+				i++;
+		}
 	}
 	return (count);
 }
 
-static int add_to_array(char **array, char **string, int i)
+static int	add_to_array(char **array, char **string, int i)
 {
-	int length;
+	int	length;
 
 	length = 0;
 	while ((*string)[length] && !is_whitespace((*string)[length]))
-        length++;
+		length++;
 	array[i] = ft_substr(*string, 0, length);
-    if (!(array[i]))
-    {
-        free_array(array);    
-        return (0);
-    }
+	if (!(array[i]))
+	{
+		free_array(array);
+		return (0);
+	}
 	*string += length;
 	return (1);
 }
 
+/*
 int	main(void)
 {
 	char	**array;
@@ -137,3 +144,4 @@ int	main(void)
     free_array(array);
 	return (0);
 }
+*/

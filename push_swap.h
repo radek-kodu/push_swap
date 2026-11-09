@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 14:26:58 by jrosette         ###   ########.fr       */
-=======
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 14:48:04 by rpokorny         ###   ########.fr       */
->>>>>>> b130993 (updating main and its' structure)
+/*   Updated: 2026/11/09 16:46:41 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +75,7 @@ void	rrr(t_data *data);
 /*Input Utilities*/
 char	*convert_input(int argc, char **argv);
 char	**parse_nbrs(char *input, int start, int *total_elements);
-int 	parse_flags(char *args, t_flags **flags);
+int 	parse_flags(char *args, t_flags *flags);
 int	    is_empty_string(char *input);
 int     is_digit(char c);
 int	    is_whitespace(char c);

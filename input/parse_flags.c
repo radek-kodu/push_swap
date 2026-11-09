@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 14:28:41 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:52:26 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,11 @@ static t_flags	*assign_flag(char *string, t_flags *flags);
 static int		is_flag_available(char *string, t_flags *flags);
 static char		*get_flag(char *args, int *i);
 
-int parse_flags(char *args, t_flags **flags)
+int parse_flags(char *args, t_flags *flags)
 {
 	int		i;
 	char	*flag;
 
-	*flags = malloc(sizeof(t_flags));
-	if (!(*flags))
-		return (1);
 	i = 0;
 	while (args[i])
 	{
@@ -56,43 +53,16 @@ int parse_flags(char *args, t_flags **flags)
 			i++;
 		flag = get_flag(args, &i);
 		if (flag)
-			*flags = assign_flag(flag, *flags);
+			flags = assign_flag(flag, flags);
 		else
 			break ;
 		i++;
 	}
-	if ((**flags).start != -1)
-		(**flags).start = i;
+	if ((*flags).start != -1)
+		(*flags).start = i;
 	free(flag);
 	return (0);
 }
-
-// t_flags	*parse_flags(char *args)
-// {
-// 	t_flags	*flags;
-// 	int		i;
-// 	char	*flag;
-
-// 	flags = malloc(sizeof(t_flags));
-// 	if (!flags)
-// 		return (NULL);
-// 	i = 0;
-// 	while (args[i])
-// 	{
-// 		while (args[i] == ' ')
-// 			i++;
-// 		flag = get_flag(args, &i);
-// 		if (flag)
-// 			flags = assign_flag(flag, flags);
-// 		else
-// 			break ;
-// 		i++;
-// 	}
-// 	if ((*flags).start != -1)
-// 		(*flags).start = i;
-// 	free(flag);
-// 	return (flags);
-// }
 
 static char	*get_flag(char *args, int *i)
 {

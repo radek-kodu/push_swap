@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 15:44:51 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 10:50:31 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/09 16:53:03 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	find_length(char *string, int *start)
 {
 	int	end;
 
-	// while (is_whitespace(string[*start]))
-	// 	(*start)++;
 	end = *start;
 	while (is_digit(string[end]) || is_sign(string[end]))
 		end++;
