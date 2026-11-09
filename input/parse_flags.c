@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 17:20:10 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:52:31 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ int	parse_flags(char *args, t_flags *flags)
 	if ((*flags).start != -1)
 		(*flags).start = i;
 	free(flag);
-	return (0);
+	printf("%d\n", (*flags).strategy);
+	printf("%d\n", (*flags).bench);
+	printf("%d\n", (*flags).start);
+	return (1);
 }
 
 static char	*get_flag(char *args, int *i)

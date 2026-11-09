@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 18:42:18 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 18:57:05 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,18 @@ int	main(int argc, char **argv)
 	flags = (t_flags){0};
 	input = convert_input(argc, argv);
 	if (!parse_flags(input, &flags))
-		return (write(2, "Error: flags\n", 12), 1);
+		return (write(2, "Error: flags\n", 13), 1);
 	parse_nbrs(input, flags.start, &nbs, &data.size);
 	free(input);
 	if (!nbs)
-		return (write(2, "Error: nbs\n", 11), 1);
+		return (write(2, "Error: nbs\n", 12), 1);
+	printf("Point 1\n");
 	flags.disorder = compute_disorder(nbs, data.size);
+	printf("Point 2\n");
 	if (!nbs_conversion(nbs, &data))
 	{
 		free(nbs);
-		return (write(2, "Error: conv\n", 12), 1);
+		return (write(2, "Error: conv\n", 13), 1);
 	}
 	free(nbs);
 	sorting(&data, flags);
