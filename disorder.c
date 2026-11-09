@@ -6,13 +6,13 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 18:19:15 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 14:56:31 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:26:51 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-double	compute_disorder(char *nbs, int size)
+double	compute_disorder(int *nbs, int size)
 {
 	int	mistakes;
 	int	total_pairs;

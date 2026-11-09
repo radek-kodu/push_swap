@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 13:36:10 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/07 16:35:20 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:29:34 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	w_strategy(int strategy, double disorder)
 			write (2, "O(n log n)\n", 11);
 	}
 	else if (strategy == 2)
-		wirte (2, "Simple / O(n2)\n", 15);
+		write (2, "Simple / O(n2)\n", 15);
 	else if (strategy == 3)
 		write (2, "Medium / O(n√n)\n", 16);
 	else

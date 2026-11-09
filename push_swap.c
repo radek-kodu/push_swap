@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 15:14:43 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:17:25 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ void	sorting(t_data *data, t_flags flags)
 		sort_complex(data);
 	if (flags.bench == 1)
 		print_bench(data, flags);
-}
-
-void    push_swap(int argc, char **argv)
-{
-	
 }
 
 int main(int argc, char **argv)

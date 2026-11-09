@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 16:46:41 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/09 17:06:08 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_data
 	int		size;
 }	t_data;
 
-double	compute_disorder(int *nbs, int argc);
 /*Operations*/
 void	sa(t_data *data);
 void	sb(t_data *data);
@@ -106,11 +105,13 @@ t_node	*ft_lstlast(t_node *lst);
 void	ft_lstadd_back(t_node **lst, t_node *new);
 void	stack_clear(t_node **a);
 void	print_bench(t_data *data, t_flags flags);
+double	compute_disorder(int *nbs, int size);
 
 /*Sort Algorithms*/
 void	sort_two(t_data *data);
 void	sort_three(t_data *data);
 void	sort_small(t_data *data);
+void	sort_simple(t_data *data);
 void	sort_medium(t_data *data);
 void	sort_complex(t_data *data);
 void	sort_adaptive(t_flags *flags);
