@@ -1,0 +1,21 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug push_swap",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/push_swap",
+            "args": [
+                "--bench",
+                "5", "2", "8", "1", "9", "3"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 14:17:18 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 18:05:41 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:06:34 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	sort_medium(t_data *data)
 	int	top;
 	int	size;
 
-	size = data->size - 1;
+	size = data->size;
 	start = 0;
 	chunk_size = chunk_sizer(size);
 	top = chunk_size;

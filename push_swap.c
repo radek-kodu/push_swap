@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 22:31:11 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:41:11 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	sorting(t_data *data, t_flags flags)
 			print_bench(data, flags);
 		return ;
 	}
+	indexing(data->a);
 	if (flags.strategy == 0 || flags.strategy == 1)
 		sort_adaptive(&flags);
 	if (data->size <= 5)

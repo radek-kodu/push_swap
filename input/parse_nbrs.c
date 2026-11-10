@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_nbrs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 18:53:45 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:31:53 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	parse_nbrs(char *input, int start, int **numbers_array, int *total_elements)
 
 	input += start;
 	if (!is_valid_nbrs(input))
-		return (1);
+		return (0);
 	*total_elements = count_numbers(input);
 	chars_array = calloc_plus((*total_elements + 1), sizeof(char *));
 	if (!chars_array)
-		return (1);
+		return (0);
 	i = 0;
 	while (*input)
 	{

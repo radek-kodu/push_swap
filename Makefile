@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -O0
 
 SRCS = push_swap.c \
 	lib_data.c \
