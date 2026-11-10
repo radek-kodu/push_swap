@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 13:36:10 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/09 16:29:34 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:58:58 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	w_strategy(int strategy, double disorder)
 	else if (strategy == 2)
 		write (2, "Simple / O(n2)\n", 15);
 	else if (strategy == 3)
-		write (2, "Medium / O(n√n)\n", 16);
+		write (2, "Medium / O(n√n)\n", 18);
 	else
 		write (2, "Complex / O(n log n)\n", 21);
 }
 
 static void	w_op(t_data *data)
 {
-	write(2, "sa: ", 4);
+	write(2, "\nsa: ", 5);
 	ft_putnbr_fd(data->bench.sa, 2);
 	write(2, "  sb: ", 6);
 	ft_putnbr_fd(data->bench.sb, 2);

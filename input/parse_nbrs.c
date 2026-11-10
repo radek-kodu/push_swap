@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:45:32 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/10 11:31:53 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/10 12:24:18 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	parse_nbrs(char *input, int start, int **numbers_array, int *total_elements)
 		if (!*input)
 			break ;
 		if (!add_to_array(chars_array, &input, i))
-			return (free_array(chars_array), 1);
+			return (free_array(chars_array), 0);
 		i++;
 	}
 	*numbers_array = validate(chars_array, *total_elements);
@@ -116,7 +116,6 @@ static int	add_to_array(char **array, char **string, int i)
 	array[i] = ft_substr(*string, 0, length);
 	if (!(array[i]))
 	{
-		free_array(array);
 		return (0);
 	}
 	*string += length;

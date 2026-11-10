@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 18:52:31 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/10 14:53:26 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,22 @@ int	parse_flags(char *args, t_flags *flags)
 	{
 		while (args[i] == ' ')
 			i++;
-		flag = get_flag(args, &i);
-		if (flag)
-			flags = assign_flag(flag, flags);
-		else
+		if (!args[i] || args[i] != '-' || args[i + 1] != '-')
 			break ;
-		i++;
+		flag = get_flag(args, &i);
+		if (!flag)
+			return (flags->start = -1, 0);
+		flags = assign_flag(flag, flags);
+		free(flag);
+		if (flags->start == -1)
+			return (0);
 	}
-	if ((*flags).start != -1)
-		(*flags).start = i;
-	free(flag);
-	printf("%d\n", (*flags).strategy);
-	printf("%d\n", (*flags).bench);
-	printf("%d\n", (*flags).start);
+	//if ((*flags).start != -1)
+	//	(*flags).start = i;
+	//printf("%d\n", (*flags).strategy);
+	//printf("%d\n", (*flags).bench);
+	//printf("%d\n", (*flags).start);
+	flags->start = i;
 	return (1);
 }
 
@@ -76,23 +79,26 @@ static char	*get_flag(char *args, int *i)
 
 	temp = *i;
 	len = 0;
-	while (args[temp++] && args[temp++] != ' ')
+	while (args[temp] && args[temp] != ' ')
+	{
 		len++;
+		temp++;
+	}
 	flag = malloc(len + 1);
 	if (!flag)
 		return (NULL);
 	j = 0;
 	while (args[*i])
 	{
-		if (args[*i] == ' ' || is_digit(args[*i]))
+		if (args[*i] == ' ')
 			break ;
 		flag[j++] = args[(*i)++];
 	}
 	flag[j] = '\0';
 	if (is_validflag(flag))
 		return (flag);
-	else
-		return (NULL);
+	free(flag);
+	return (NULL);
 }
 
 static int	is_validflag(char *string)
