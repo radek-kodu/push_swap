@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 22:24:01 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/08 18:49:52 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/10 16:08:11 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	maximal_bit(int argc)
 	int	size;
 	int	max_bit;
 
-	size = argc - 2;
+	size = argc - 1;
 	max_bit = 0;
 	while (size > 0)
 	{
@@ -38,7 +38,7 @@ void	sort_complex(t_data *data)
 	while (bit < max_bit)
 	{
 		i = 0;
-		while (i < data->size - 1)
+		while (i < data->size)
 		{
 			if (((data->a->index >> bit) & 1) == 0)
 				pb(data);

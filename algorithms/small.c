@@ -6,7 +6,7 @@
 /*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:33:59 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/10 14:20:57 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/10 16:03:34 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	sort_small(t_data *data)
 		return ;
 	orig_stack_size = get_stack_size(data->a);
 	if (get_stack_size(data->a) == 2)
-		sort_two(data);
+		return(sort_two(data));
 	while (get_stack_size(data->a) > 3)
 	{
 		min_pos = get_node_position(data->a, find_min(data->a));
