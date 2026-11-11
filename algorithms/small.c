@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:33:59 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/10 16:03:34 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/11 09:24:42 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ Specialized handling for n<= 5
 */
 #include "../push_swap.h"
 
-static void	bring_min_top(t_data *data, int min_pos);
+// static void	bring_min_top(t_data *data, int min_pos);
 
 // For sorting 2 nodes
 void	sort_two(t_data *data)
@@ -62,7 +62,7 @@ void	sort_small(t_data *data)
 	while (get_stack_size(data->a) > 3)
 	{
 		min_pos = get_node_position(data->a, find_min(data->a));
-		bring_min_top(data, min_pos);
+		bring_node_top(data, min_pos);
 		pb(data);
 	}
 	sort_three(data);
@@ -70,6 +70,7 @@ void	sort_small(t_data *data)
 		pa(data);
 }
 
+/*
 static void	bring_min_top(t_data *data, int min_pos)
 {
 	if (!data->a || min_pos == 0)
@@ -91,3 +92,4 @@ static void	bring_min_top(t_data *data, int min_pos)
 	else
 		return ;
 }
+*/

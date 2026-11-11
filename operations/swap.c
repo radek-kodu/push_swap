@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:28:20 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/07 12:59:50 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/11 09:09:49 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,6 @@ static void	swap_toptwo(t_node **c)
 	temp_ptr->next = *c;
 	*c = temp_ptr;
 }
-
-// static void	swap_toptwo(t_node **c)
-// {
-//     int temp_value;
-//     int temp_index;
-
-//     /* if 0 or 1 nodes, return*/
-//     if (*c == NULL)
-//         return ;
-//     if ((*c)->next == NULL)
-//         return ;
-//     /*switch values*/
-//     temp_value = (*c)->value;
-//     (*c)->value = (*c)->next->value;
-//     (*c)->next->value = temp_value;
-//     /*also switch index*/
-//     temp_index = (*c)->index;
-//     (*c)->index = (*c)->next->index;
-//     (*c)->next->index = temp_index;
-// }
 
 void	sa(t_data *data)
 {
