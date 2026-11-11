@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:48:52 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/11 12:05:07 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/11 14:12:23 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,20 @@ int	is_duplicate(int nbr, t_node *stack)
 	return (1);
 }
 
-void	stack_add_back(t_node **stack, t_node *new)
-{
-	t_node	*current;
+// void	stack_add_back(t_node **stack, t_node *new)
+// {
+// 	t_node	*current;
 
-	if (*stack == NULL)
-	{
-		*stack = new;
-		return ;
-	}
-	current = *stack;
-	while (current->next)
-		current = current->next;
-	current->next = new;
-}
+// 	if (*stack == NULL)
+// 	{
+// 		*stack = new;
+// 		return ;
+// 	}
+// 	current = *stack;
+// 	while (current->next)
+// 		current = current->next;
+// 	current->next = new;
+// }
 
 t_node	*free_stack(t_node *stack)
 {
