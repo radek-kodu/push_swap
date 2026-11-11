@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/10 11:40:53 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/11 12:06:17 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_node	*lastnode(t_node *a);
 t_node	*find_min(t_node *a);
 int		get_node_position(t_node *a, t_node *node);
 int		get_stack_size(t_node *a);
-void	bring_node_top(t_data *data, int node_pos);
+void	bring_node_top(t_data *data, int node_pos, char stack);
 t_node	*new_node(int value);
 int		is_duplicate(int nbr, t_node *stack);
 void	stack_add_back(t_node **stack, t_node *new);

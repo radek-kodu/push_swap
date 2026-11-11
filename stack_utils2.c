@@ -3,38 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:48:52 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 18:36:27 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/11 12:05:07 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bring_node_top(t_data *data, int node_pos)
+static void    rotate_stack(t_data *data, char stack);
+static void    reverse_rotate_stack(t_data *data, char stack);
+
+void	bring_node_top(t_data *data, int node_pos, char stack)
 {
 	int	middle_pos;
 	int	stack_size;
 
-	stack_size = get_stack_size(data->a);
+    if (stack == 'a')
+        stack_size = get_stack_size(data->a);
+    else if (stack == 'b')
+        stack_size = get_stack_size(data->b);
+    else
+        return ;
 	middle_pos = stack_size / 2;
-	if (node_pos <= middle_pos)
+	while (node_pos > 0 && node_pos <= middle_pos)
 	{
-		while (node_pos > 0)
-		{
-			ra(data);
-			node_pos--;
-		}
-	}
-	else
+        rotate_stack(data, stack);
+        node_pos--;
+	}	
+    while (node_pos > middle_pos && node_pos < stack_size)
 	{
-		while (node_pos != stack_size)
-		{
-			rra(data);
-			node_pos++;
-		}
+        reverse_rotate_stack(data, stack);
+        node_pos++;
 	}
+}
+
+static void    rotate_stack(t_data *data, char stack)
+{
+    if (stack == 'a')
+        ra(data);
+    else
+        rb(data);
+}
+
+static void    reverse_rotate_stack(t_data *data, char stack)
+{
+    if (stack == 'a')
+        rra(data);
+    else
+        rrb(data);
 }
 
 t_node	*new_node(int value)

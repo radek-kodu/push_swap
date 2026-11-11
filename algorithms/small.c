@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:33:59 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/11 09:24:42 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/11 12:08:09 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	sort_small(t_data *data)
 	while (get_stack_size(data->a) > 3)
 	{
 		min_pos = get_node_position(data->a, find_min(data->a));
-		bring_node_top(data, min_pos);
+		bring_node_top(data, min_pos, 'a');
 		pb(data);
 	}
 	sort_three(data);
