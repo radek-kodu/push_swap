@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/10 15:56:38 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/12 11:51:44 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ void	sorting(t_data *data, t_flags flags)
 		sort_complex(data);
 	if (flags.bench == 1)
 		print_bench(data, flags);
-
-//fprintf(stderr, "Strategy selected: %d\n", flags.strategy);
-	//#include <stdio.h>
-	//t_node	*tmp;
-
-	//tmp = data->a;
-	//while (tmp)
-	//{
-	//	fprintf(stderr, "%d ", tmp->value);
-	//	tmp = tmp->next;
-	//}
-	//fprintf(stderr, "\n");
 }
 
 static int	prepare_input(int argc, char **argv, t_flags *flags, t_data *data)
@@ -102,3 +90,17 @@ int	main(int argc, char **argv)
 	stack_clear(&data.b);
 	return (0);
 }
+
+/*
+//fprintf(stderr, "Strategy selected: %d\n", flags.strategy);
+	//#include <stdio.h>
+	//t_node	*tmp;
+
+	//tmp = data->a;
+	//while (tmp)
+	//{
+	//	fprintf(stderr, "%d ", tmp->value);
+	//	tmp = tmp->next;
+	//}
+	//fprintf(stderr, "\n");
+*/
