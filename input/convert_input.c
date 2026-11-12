@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 13:14:45 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/08 19:27:46 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/12 12:49:46 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*convert_input(int argc, char **argv)
 	int		k;
 
 	line_length = get_line_length(argc, argv);
+	if (line_length == 0)
+		return (NULL);
 	user_input = malloc(line_length + 1);
 	if (!user_input)
 		return (NULL);
