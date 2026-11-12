@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:48:52 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/11 14:12:23 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/12 11:23:01 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	bring_node_top(t_data *data, int node_pos, char stack)
         stack_size = get_stack_size(data->b);
     else
         return ;
-	middle_pos = stack_size / 2;
+		middle_pos = stack_size / 2;
 	while (node_pos > 0 && node_pos <= middle_pos)
 	{
         rotate_stack(data, stack);

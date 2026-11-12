@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:33:59 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/11 12:08:09 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/12 11:28:55 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	sort_small(t_data *data)
 		return ;
 	orig_stack_size = get_stack_size(data->a);
 	if (get_stack_size(data->a) == 2)
-		return(sort_two(data));
+		return (sort_two(data));
 	while (get_stack_size(data->a) > 3)
 	{
 		min_pos = get_node_position(data->a, find_min(data->a));
@@ -69,27 +69,3 @@ void	sort_small(t_data *data)
 	while (get_stack_size(data->a) < orig_stack_size)
 		pa(data);
 }
-
-/*
-static void	bring_min_top(t_data *data, int min_pos)
-{
-	if (!data->a || min_pos == 0)
-		return ;
-	else if (min_pos == 1)
-		sa(data);
-	else if (min_pos == 2)
-	{
-		ra(data);
-		ra(data);
-	}
-	else if (min_pos == 3)
-	{
-		rra(data);
-		rra(data);
-	}
-	else if (min_pos == 4)
-		rra(data);
-	else
-		return ;
-}
-*/

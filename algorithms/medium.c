@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 14:17:18 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/11 12:20:53 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/12 11:18:54 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,25 @@ static void	push_chunk(t_data *data, int start, int top)
 	}
 }
 
+static int	get_pos(t_node *stack, int size)
+{
+	t_node	*largest_node;
+	int		node_pos;
+
+	largest_node = stack;
+	while (largest_node && largest_node-> index != size -1)
+		largest_node = largest_node->next;
+	node_pos = get_node_position(stack, largest_node);
+	return (node_pos);
+}
+
 void	sort_medium(t_data *data)
 {
-	int	chunk_size;
-	int	start;
-	int	top;
-	int	size;
-    t_node  *largest_node;
-    int node_pos;
+	int		chunk_size;
+	int		start;
+	int		top;
+	int		size;
+	int		node_pos;
 
 	size = data->size;
 	start = 0;
@@ -68,23 +79,18 @@ void	sort_medium(t_data *data)
 		push_chunk(data, start, top);
 		chunk_mover(&start, &top, chunk_size, size);
 	}
-    while (size > 0)
-    {
-        largest_node = data->b;
-        while (largest_node && largest_node-> index != size -1)
-            largest_node = largest_node->next;
-        node_pos = get_node_position(data->b, largest_node);
-        if (node_pos == -1)
-            return ;
-        bring_node_top(data, node_pos, 'b');
-        pa(data);
-        size--;
-    }
-    // while (size - 1 >= 0)
-	// {
-	// 	while (data->b && size - 1 != data->b->index)
-	// 		rb(data);
-	// 	pa(data);
-	// 	size--;
-	// }
+	while (size > 0)
+	{
+		node_pos = get_pos(data->b, size);
+		if (node_pos == -1)
+			return ;
+		bring_node_top(data, node_pos, 'b');
+		pa(data);
+		size--;
+	}
 }
+
+		// largest_node = data->b;
+		// while (largest_node && largest_node-> index != size -1)
+		// 	largest_node = largest_node->next;
+		// node_pos = get_node_position(data->b, largest_node);
