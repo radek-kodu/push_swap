@@ -1,111 +1,139 @@
 *This project has been created as part of the 42 curriculum by rpokorny, jrosette.*
 
-# Push swap
-
-The Push swap project is a "VERY SIMPLE and highly STRAIGHTFORWARD" algorithm project:
-data must be sorted.
-
-Just sort integer values using two stacks and wirtting down each of operation used, nothing complicated right?
+# push_swap
 
 ## Description
 
-### Input
+**push_swap** is an algorithmic sorting project from the 42 curriculum. The goal is to sort a list of integers in ascending order using two stacks (`a` and `b`) and a limited set of stack operations, while minimizing the total number of operations.
 
-### Operations
+The program receives a list of integers as arguments, assigns each number an index based on its relative value, and sorts the numbers using a selected sorting strategy.
 
-Sorting is done via predefined operations:
-
-sa (swap a): Swap the first two elements at the top of stack a.
-	Do nothing if there is only one or no elements.
-
-sb (swap b): Swap the first two elements at the top of stack b.
-	Do nothing if there is only one or no elements.
-
-ss : sa and sb at the same time.
-
-pa (push a): Take the first element at the top of b and put it at the top of a.
-	Do nothing if b is empty.
-
-pb (push b): Take the first element at the top of a and put it at the top of b.
-	Do nothing if a is empty.
-
-ra (rotate a): Shift up all elements of stack a by one.
-	The first element becomes the last one.
-
-rb (rotate b): Shift up all elements of stack b by one.
-	The first element becomes the last one.
-
-rr : ra and rb at the same time.
-
-rra (reverse rotate a): Shift down all elements of stack a by one.
-	The last element becomes the first one.
-
-rrb (reverse rotate b): Shift down all elements of stack b by one.
-	The last element becomes the first one.
-
-rrr : rra and rrb at the same time.
-
-And they are consolidated into 4 files based on it's function.
-
-In the prcess also prints down each name of the operation used and counts every usage.
-
-### Algorithms
-
-For sorting the numbers there are 3 sorting algorithms, a few sorting functions for small stacks and helper functions for algorithms.
-
-Of course, every algorithm had to be alternated for two-stack manipulation.
-
-#### Small
-
-If there is a input including less then 6 numbers, we have special sorting functions for each of the cases.
-
-#### Simple
-
-Selection sort
-
-#### Medium
-
-Chunk-based sort
-
-#### Complex
-
-Binary radix sort
-
-#### Adaptive
-
-Based on the disorder calculated at the beginning of the project, this function chooses the right algorithm to use. The higher the disorder, the more complecated and effective sorting algorithm.
-
-### Others
-
-Indexing - for each of the numbers creates index based on its value in comparison of other numbers.
-
-Disorder - calculates disorder of the numbers. If it's zero, the stack is already sorted, and the maximum value is 1.
-
+The project focuses on:
+- Understanding and implementing sorting algorithms.
+- Working with stacks and linked lists.
+- Managing memory allocation and deallocation.
+- Handling input parsing and validation.
+- Optimizing the number of operations required to sort a list.
 
 ## Instructions
 
-Beside the numbers you can also costumise the way the numbers are sorted via 4 different flags:
+### Compilation
 
---simple Forces the use of your O(n2) algorithm.
---medium Forces the use of your O(n√n) algorithm.
---complex Forces the use of your O(n log n) algorithm.
---adaptive Forces the use of your adaptive algorithm based on disorder.
-		This is the default behavior if no selector is given.
+Clone the repository and navigate to its root directory:
 
-In addition, there is one more flag, --bench.
+```bash
+git clone <repository-url>
+cd push_swap
+```
 
-The optional benchmark mode display, after sorting:
-◦ The computed disorder (% with two decimals).
-◦ The name of the strategy used and its theoretical complexity class.
-◦ The total number of operations.
-◦ The count of each operation type (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb,
-rrr).
+Compile the project using the Makefile:
 
-The benchmark output will be sent to stderr and only appear when the flag is
-present.
+```bash
+make
+```
+
+This generates the `push_swap` executable.
+
+Other available Makefile commands:
+
+```bash
+make clean    # Remove object files
+make fclean   # Remove object files and executable
+make re       # Recompile the project
+```
+
+### Execution
+
+Run the program by passing a list of integers:
+
+```bash
+./push_swap 4 67 3 87 23
+```
+
+The program outputs the stack operations required to sort the numbers in ascending order.
+
+You can also provide the numbers as a quoted string:
+
+```bash
+./push_swap "4 67 3 87 23"
+```
+
+### Sorting strategies
+
+The program supports the following optional strategy flags:
+
+| Flag | Description |
+|---|---|
+| `--adaptive` | Selects the adaptive sorting strategy. |
+| `--simple` | Selects the simple sorting strategy. |
+| `--medium` | Selects the medium sorting strategy. |
+| `--complex` | Selects the complex sorting strategy. |
+| `--bench` | Enables benchmark mode. |
+
+Example:
+
+```bash
+./push_swap --adaptive 4 67 3 87 23
+```
+
+Benchmark mode can be combined with one sorting strategy:
+
+```bash
+./push_swap --bench --adaptive 4 67 3 87 23
+```
+
+Only one sorting strategy can be selected at a time. Flags must appear before the integer arguments.
+
+### Checking the output
+
+If a compatible `checker` executable is available, you can verify whether the generated operations correctly sort the input:
+
+```bash
+ARG="4 67 3 87 23"
+./push_swap $ARG | ./checker $ARG
+```
+
+A successful sort should return:
+
+```text
+OK
+```
+
+## Available operations
+
+The program sorts the integers using the following operations:
+
+| Operation | Description |
+|---|---|
+| `sa` | Swap the first two elements of stack A. |
+| `sb` | Swap the first two elements of stack B. |
+| `ss` | Perform `sa` and `sb` simultaneously. |
+| `pa` | Push the top element of stack B onto stack A. |
+| `pb` | Push the top element of stack A onto stack B. |
+| `ra` | Rotate stack A upwards. |
+| `rb` | Rotate stack B upwards. |
+| `rr` | Perform `ra` and `rb` simultaneously. |
+| `rra` | Reverse rotate stack A. |
+| `rrb` | Reverse rotate stack B. |
+| `rrr` | Perform `rra` and `rrb` simultaneously. |
+
 
 ## Resources
 
-https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memory-the-chunked-merge-sort-approach-318275275c81
-https://deepwiki.com/nach131/push_swap/4.3-chunk-based-sorting
-https://leofu890806.medium.com/push-swap-tutorial-fa746e6aba1e
+- https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memory-the-chunked-merge-sort-approach-318275275c81
+- https://deepwiki.com/nach131/push_swap/4.3-chunk-based-sorting
+- https://leofu890806.medium.com/push-swap-tutorial-fa746e6aba1e
+
+
+### AI usage
+
+AI tools (ChatGPT) were used as supplementary learning and debugging resources throughout the project.
+
+Specifically, AI assistance was used for:
+- **Conceptual explanations:** Understanding sorting algorithms, binary representation, bitwise operations, stacks, pointers, and memory management.
+- **Algorithm analysis:** Breaking down sorting strategies into smaller steps and understanding how and why they work.
+- **Debugging:** Investigating compilation errors, segmentation faults, memory leaks, input parsing issues, and unexpected program behavior.
+- **Code review:** Discussing function responsibilities, pointer handling, code organization, and possible improvements.
+- **Documentation:** Assisting with the preparation and organization of this README.
+
+AI was primarily used to support understanding, troubleshoot problems, and evaluate implementation choices rather than as a substitute for learning the underlying concepts.
