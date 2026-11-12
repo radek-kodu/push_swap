@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/10 14:53:26 by rpokorny         ###   ########.fr       */
+/*   Updated: 2026/11/12 11:31:54 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ int	parse_flags(char *args, t_flags *flags)
 		if (flags->start == -1)
 			return (0);
 	}
-	//if ((*flags).start != -1)
-	//	(*flags).start = i;
-	//printf("%d\n", (*flags).strategy);
-	//printf("%d\n", (*flags).bench);
-	//printf("%d\n", (*flags).start);
 	flags->start = i;
 	return (1);
 }
@@ -79,11 +74,8 @@ static char	*get_flag(char *args, int *i)
 
 	temp = *i;
 	len = 0;
-	while (args[temp] && args[temp] != ' ')
-	{
+	while (args[temp++] && args[temp++] != ' ')
 		len++;
-		temp++;
-	}
 	flag = malloc(len + 1);
 	if (!flag)
 		return (NULL);

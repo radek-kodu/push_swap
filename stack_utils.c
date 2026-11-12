@@ -6,12 +6,11 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:44:54 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/09 18:16:00 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/12 11:37:41 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-
 Helper functions for building, inspecting, 
 and cleaning up the linked-list stack. 
 
@@ -20,15 +19,6 @@ and cleaning up the linked-list stack.
 * find_min: returns a pointer to the node with the smallest value
 * get_node_position: returns an int indicating the position of a node
 * get_stack_size: returns the number of nodes
-* bring_node_top: pushes a node to the top of the stack
-* new_node: creates a new stack with initialized values
-* is_duplicate: checks if int value already exists in the stack
-* stack_add_back: adds a new node at the bottom of the stack
-
-----------
-Other possible functions:
-free_stack: destroys the stack || void    free_stack(t_node **a);
-
 */
 
 #include "push_swap.h"
