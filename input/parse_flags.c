@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/12 11:31:54 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/12 12:44:46 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ static char	*get_flag(char *args, int *i)
 	int		temp;
 
 	temp = *i;
-	len = 0;
-	while (args[temp++] && args[temp++] != ' ')
-		len++;
+	len = find_length(args, &temp);
 	flag = malloc(len + 1);
 	if (!flag)
 		return (NULL);
