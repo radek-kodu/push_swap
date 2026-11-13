@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/12 11:51:44 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/13 15:21:41 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	main(int argc, char **argv)
 	t_flags	flags;
 	t_data	data;
 
+    if (argc == 1)
+        return (0);
 	data = (t_data){0};
 	flags = (t_flags){0};
 	if (!prepare_input(argc, argv, &flags, &data))
