@@ -99,7 +99,7 @@ A successful sort should return:
 OK
 ```
 
-## Available operations
+### Available operations
 
 The program sorts the integers using the following operations:
 
@@ -117,7 +117,7 @@ The program sorts the integers using the following operations:
 | `rrb` | Reverse rotate stack B. |
 | `rrr` | Perform `rra` and `rrb` simultaneously. |
 
-## Algorithms Used
+### Algorithms Used
 
 | Strategy | Description of Algorithm Used |
 |---|---|
@@ -127,6 +127,12 @@ The program sorts the integers using the following operations:
 | `complex` | `Binary radix sorting` was utilized in order to make use of the indexing function utilized in `chunk sorting`.  Instead of using the actual values, the numbers are indexed and the indices are used as basis for sorting. First, it calculates the maximum number of bits needed to represent the largest index. It then iterates through each bit position, starting with the least significant bit (rightmost). For each bit, it goes through all elements in stack A, checking whether the current bit is 0 or 1. If it is 0, the element is pushed to stack B using pb(); if it is 1, the element is rotated to the bottom of stack A using ra(). Once all elements have been checked for that bit, it pushes everything from B back to A using pa(). It then moves to the next bit position and repeats the process until all bits have been examined, resulting in the elements being sorted in ascending index order. |
 | `adaptive` | Based on calculated disorder, the numbers are sorted with simple, medium, or complex strategies. The `adaptive` strategy is the default strategy. If disorder is less than 0.2, a simple strategy is used. If between 0.2 (inclusive) and 0.5 (exclusive), a medium strategy is used. For 0.5 (inclusive) and beyond, a complex strategy is employed. |
 
+### Learners' Contributions
+
+| Learner | Contribution |
+|---|---|
+| `jrosette` | Operations (push, rotate, reverse rotate, swap), Input (parsing and validation of user input), Data structure (flags, nodes), Input utils, Stack utils, Small and Simple algorithm, README file, Debugging. |
+| `rpokorny` | Data structure (data, bench) and data utils, Refactoring of Operations (push, rotate, reverse rotate, swap), Indexing, Medium and Complex algorithm, Bench, Printing of operations and bench, Makefile, Debugging |
 
 ## Resources
 
