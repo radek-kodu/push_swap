@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:42:19 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/12 11:48:23 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/13 20:54:50 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	sort_small(t_data *data);
 void	sort_simple(t_data *data);
 void	sort_medium(t_data *data);
 void	sort_complex(t_data *data);
-void	sort_adaptive(t_flags *flags);
+void	sort_adaptive(t_flags *flags, t_data *data);
 void	indexing(t_node *a);
 
 #endif

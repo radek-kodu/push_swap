@@ -6,7 +6,7 @@
 /*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 19:29:36 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/13 15:21:41 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/13 20:53:23 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	sorting(t_data *data, t_flags flags)
 	}
 	indexing(data->a);
 	if (flags.strategy == 0 || flags.strategy == 1)
-		sort_adaptive(&flags);
+		sort_adaptive(&flags, data);
 	if (data->size <= 5)
 		sort_small(data);
 	else if (flags.strategy == 2)

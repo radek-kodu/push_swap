@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 13:36:10 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/12 13:02:39 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/13 20:56:20 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	w_strategy(int strategy, double disorder)
 		if (disorder < 0.2)
 			write (2, "O(n2)\n", 6);
 		else if (disorder >= 0.2 && disorder < 0.5)
-			write (2, "O(n√n)\n", 7);
+			write (2, "O(n√n)\n", 9);
 		else
 			write (2, "O(n log n)\n", 11);
 	}
