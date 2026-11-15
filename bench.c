@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpokorny <rpokorny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 13:36:10 by rpokorny          #+#    #+#             */
-/*   Updated: 2026/11/15 14:36:27 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/15 15:24:13 by rpokorny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	print_bench(t_data *data, t_flags flags)
 	write (2, "disorder:	", 10);
 	disorder_perc = flags.disorder * 100;
 	ft_putnbr_fd(disorder_perc, 2);
-	write (2, ".00%\n", 6);
+	write (2, ".00%\n", 5);
 	write (2, "strategy:	", 10);
 	w_strategy(flags.strategy, flags.disorder);
 	write(2, "total_ops:	", 11);
