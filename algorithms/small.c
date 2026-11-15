@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:33:59 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/15 15:42:58 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/15 15:47:17 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	sort_small(t_data *data)
 		return ;
 	orig_stack_size = get_stack_size(data->a);
 	if (orig_stack_size < 3)
-	{		
+	{
 		sort_two(data);
 	}
-	else 
+	else
 	{
 		while (get_stack_size(data->a) > 3)
 		{
