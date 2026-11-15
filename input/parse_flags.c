@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:43:17 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/13 20:49:59 by camille          ###   ########.fr       */
+/*   Updated: 2026/11/15 14:38:12 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	parse_flags(char *args, t_flags *flags)
 			return (0);
 	}
 	flags->start = i;
-    // printf("Strat flag: %d\n", flags->strategy);
 	return (1);
 }
 
@@ -123,8 +122,8 @@ static t_flags	*assign_flag(char *string, t_flags *flags)
 			(*flags).strategy = 3;
 		else if (ft_strcmp(string, "--complex") == 0)
 			(*flags).strategy = 4;
-        else
-            (*flags).strategy = 1;
+		else
+			(*flags).strategy = 1;
 	}
 	return (flags);
 }
