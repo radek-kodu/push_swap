@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 12:33:59 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/12 11:28:55 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/15 15:42:58 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ Specialized handling for n<= 5
 void	sort_two(t_data *data)
 {
 	if (!is_sorted(data->a))
+	{
 		sa(data);
+	}
 }
 
 // For sorting 3 nodes
@@ -57,15 +59,20 @@ void	sort_small(t_data *data)
 	if (!data)
 		return ;
 	orig_stack_size = get_stack_size(data->a);
-	if (get_stack_size(data->a) == 2)
-		return (sort_two(data));
-	while (get_stack_size(data->a) > 3)
-	{
-		min_pos = get_node_position(data->a, find_min(data->a));
-		bring_node_top(data, min_pos, 'a');
-		pb(data);
+	if (orig_stack_size < 3)
+	{		
+		sort_two(data);
 	}
-	sort_three(data);
-	while (get_stack_size(data->a) < orig_stack_size)
-		pa(data);
+	else 
+	{
+		while (get_stack_size(data->a) > 3)
+		{
+			min_pos = get_node_position(data->a, find_min(data->a));
+			bring_node_top(data, min_pos, 'a');
+			pb(data);
+		}
+		sort_three(data);
+		while (get_stack_size(data->a) < orig_stack_size)
+			pa(data);
+	}
 }

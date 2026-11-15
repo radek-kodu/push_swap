@@ -6,7 +6,7 @@
 /*   By: jrosette <jrosette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 17:44:54 by jrosette          #+#    #+#             */
-/*   Updated: 2026/11/12 11:37:41 by jrosette         ###   ########.fr       */
+/*   Updated: 2026/11/15 15:42:02 by jrosette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ and cleaning up the linked-list stack.
 int	is_sorted(t_node *a)
 {
 	if (!a)
-		return (1);
+		return (0);
 	while (a->next != NULL)
 	{
 		if (a->value > a->next->value)
